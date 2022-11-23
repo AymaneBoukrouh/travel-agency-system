@@ -18,6 +18,8 @@ services:
       DB_NAME: ${DB_NAME}
       DB_HOST: 'db'
       DB_PORT: ${DB_PORT}
+    volumes:
+    - ./api:/app
     depends_on:
     - db
 
@@ -26,6 +28,8 @@ services:
     container_name: travel_agency_system_web
     ports:
     - 3000:3000
+    volumes:
+    - ./web:/app
     depends_on:
     - api
 
@@ -39,3 +43,8 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASS}
+    volumes:
+    - ./db:/var/lib/mysql
+
+volumes:
+  db:

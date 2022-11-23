@@ -1,2 +1,8 @@
-.idea/
+# dev
+db/
+
+# env
 .env
+
+# other
+.idea/
