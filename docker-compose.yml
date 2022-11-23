@@ -18,6 +18,7 @@ services:
       DB_NAME: ${DB_NAME}
       DB_HOST: 'db'
       DB_PORT: 3306
+      SECRET_KEY: ${SECRET_KEY}
     volumes:
     - ./api:/app
     depends_on:
