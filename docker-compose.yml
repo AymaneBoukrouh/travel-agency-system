@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  api:
+    build: ./api
+    container_name: travel_agency_system_api
+    ports:
+    - 8000:80
+
+  web:
+    build: ./web
+    container_name: travel_agency_system_web
+    ports:
+    - 3000:3000
+    depends_on:
+    - api
