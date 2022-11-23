@@ -17,7 +17,7 @@ services:
       DB_PASS: ${DB_PASS}
       DB_NAME: ${DB_NAME}
       DB_HOST: 'db'
-      DB_PORT: ${DB_PORT}
+      DB_PORT: 3306
     volumes:
     - ./api:/app
     depends_on:
