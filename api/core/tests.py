@@ -9,6 +9,13 @@ class CoreApiTests(TestCase):
         self.client = APIClient()
 
     def test_register(self):
+        '''
+        Tests:
+        1. register new user
+        2. re-register same user
+        '''
+
+        # 1. register new user
         # set payload
         payload = {
             'firstname': 'John',
@@ -29,3 +36,10 @@ class CoreApiTests(TestCase):
 
         # check user added to database
         self.assertTrue(User.objects.filter(email=payload['email']).exists())
+
+        # 2. re-register same user
+        # make request
+        response = self.client.post('/api/register', payload)
+
+        # check resposne
+        self.assertEqual(response.status_code, status.HTTP_409_CONFLICT)
