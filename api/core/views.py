@@ -24,7 +24,6 @@ def register(request):
 
     # add user to database
     user.save()
-    print(user.serialize())
 
     # return user
     return Response(request.data)
