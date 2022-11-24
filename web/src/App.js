@@ -6,7 +6,7 @@ function App() {
   const [message, setMessage] = useState('Loading...');
 
   const updateMessage = (locale) => {
-    fetch('http://localhost:8000/api/hello_world/', {
+    fetch('http://localhost:8000/api/hello_world', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
