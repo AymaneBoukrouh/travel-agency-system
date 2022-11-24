@@ -12,7 +12,7 @@ def hello_world(request):
 def register(request):
     # check if email already exists
     if User.objects.filter(email=request.data['email']).exists():
-        return Response({'message': _('An account with this email already exists.')}, status=400)
+        return Response({'message': _('An account with this email already exists.')}, status=409)
 
     # create user
     user = User.objects.create(
