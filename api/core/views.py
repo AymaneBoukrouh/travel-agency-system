@@ -1,3 +1,4 @@
+from django import db
 from django.http import JsonResponse
 from django.utils.translation import gettext as _
 from rest_framework.response import Response
@@ -10,17 +11,16 @@ def hello_world(request):
 
 @api_view(['POST'])
 def register(request):
-    # check if email already exists
-    if User.objects.filter(email=request.data['email']).exists():
+    try:
+        user = User.objects.create(
+            firstname = request.data['firstname'],
+            lastname = request.data['lastname'],
+            email = request.data['email'],
+            password = request.data['password'] # TODO: encrypt password
+        )
+    
+    except db.utils.IntegrityError:
         return Response({'message': _('An account with this email already exists.')}, status=409)
-
-    # create user
-    user = User.objects.create(
-        firstname = request.data['firstname'],
-        lastname = request.data['lastname'],
-        email = request.data['email'],
-        password = request.data['password'] # TODO: encrypt password
-    )
 
     # add user to database
     user.save()
