@@ -1,8 +1,7 @@
 from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
-from core.models import User
-
+from django.contrib.auth.models import User
 
 class CoreApiTests(TestCase):
     def setUp(self):
@@ -32,7 +31,7 @@ class CoreApiTests(TestCase):
 
         # check response
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json(), payload)
+        self.assertEqual(response.json()['email'], payload['email'])
 
         # check user added to database
         self.assertTrue(User.objects.filter(email=payload['email']).exists())

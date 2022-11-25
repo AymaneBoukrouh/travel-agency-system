@@ -1,10 +1,9 @@
 from django import db
 from django.http import JsonResponse
+from django.contrib.auth.models import User
 from django.utils.translation import gettext as _
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from core.models import User
-import bcrypt
 
 @api_view(['GET'])
 def hello_world(request):
@@ -12,23 +11,26 @@ def hello_world(request):
 
 @api_view(['POST'])
 def register(request):
-    # hash password
-    hashed_password = bcrypt.hashpw(request.data['password'].encode('utf-8'), bcrypt.gensalt())
-
-    # create user if email is unique
     try:
-        user = User.objects.create(
-            firstname = request.data['firstname'],
-            lastname = request.data['lastname'],
+        # create user
+        user = User.objects.create_user(
+            username = request.data['email'], # set username to email
             email = request.data['email'],
-            password = hashed_password.decode('utf-8')
+            password = request.data['password'],
+            first_name = request.data['firstname'],
+            last_name = request.data['lastname']
         )
-    
-    except db.utils.IntegrityError:
+
+        # save user
+        user.save()
+        
+    except db.IntegrityError:
         return Response({'message': _('An account with this email already exists.')}, status=409)
 
-    # add user to database
-    user.save()
-
     # return user
-    return Response(request.data)
+    return Response({
+        'id': user.id,
+        'firstname': user.first_name,
+        'lastname': user.last_name,
+        'email': user.email
+    })
