@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # build image
-docker compose -f docker-compose.yml -f docker-compose.test.yml build
+docker compose -f docker-compose.yml -f docker-compose.test.yml build api
 
 # run container
 docker compose -f docker-compose.yml -f docker-compose.test.yml up api -d
