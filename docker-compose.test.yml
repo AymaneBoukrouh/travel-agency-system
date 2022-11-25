@@ -1,0 +1,16 @@
+services:
+  api:
+    environment:
+      DB_USER: root
+      DB_PASS: root
+      DB_NAME: travel_agency_system
+      DB_HOST: db
+      DB_PORT: 3306
+      SECRET_KEY: secret-key
+
+  db:
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: travel_agency_system
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root

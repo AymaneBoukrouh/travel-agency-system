@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  api:
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: 'db'
+      DB_PORT: 3306
+      SECRET_KEY: ${SECRET_KEY}
+    volumes:
+    - ./api:/app
+
+  web:
+    volumes:
+    - ./web:/app
+
+  db:
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    volumes:
+    - ./db:/var/lib/mysql
+
+volumes:
+  db:

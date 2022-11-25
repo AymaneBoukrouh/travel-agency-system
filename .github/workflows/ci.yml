@@ -1,0 +1,23 @@
+name: Build and Deploy Container to DigitalOcean
+
+on:
+  push:
+    branches:
+      - master
+
+    pull_request:
+      branches:
+        - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+        
+    - name: Run Tests
+      run: |
+        chmod +x ./api/test.sh
+        ./api/test.sh
