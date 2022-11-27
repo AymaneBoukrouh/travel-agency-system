@@ -3,5 +3,5 @@ from core.models import Office
 
 class OfficeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Local
+        model = Office
         fields = ['id', 'city', 'zipcode']
