@@ -1,6 +1,8 @@
 # python
 venv/
 __pycache__/
+Pipfile*
 
 # translations
 *.mo
+

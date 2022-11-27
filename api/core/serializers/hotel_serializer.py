@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from api/models/hotel.py import Hotel
+from core.models import Hotel
+
+
 class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model=Hotel

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ./models/reservation import reservation
+from core.models import Reservation
 
 class ReservationSerializer(serializers.ModelSerializer):
     class Meta:

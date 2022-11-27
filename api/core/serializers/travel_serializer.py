@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ./models/travel import Travel
+from core.models import Travel
 
 class TravelSerializer(serializers.ModelSerializer):
     class Meta:

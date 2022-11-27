@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ./models/trasnport import Transport
+from core.models import Transport
 
 class TransportSerializer(serializers.ModelSerializer):
     class Meta:

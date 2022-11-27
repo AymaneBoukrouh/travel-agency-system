@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api/models/local.py import Local
+from core.models import Local
 
 class LocalSerializer(serializers.ModelSerializer):
     class Meta:

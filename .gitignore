@@ -6,4 +6,5 @@ db/
 
 # other
 .idea/
-.lock
+
+.vscode/
