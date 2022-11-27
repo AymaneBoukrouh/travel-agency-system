@@ -1,0 +1,4 @@
+from core.serializers.hotel_serializer import HotelSerializer
+from core.serializers.office_serializer import OfficeSerializer
+from core.serializers.reservation_serializer import ReservationSerializer
+from core.serializers.trip_serializer import TripSerializer
