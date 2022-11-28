@@ -1,4 +1,4 @@
-name: Build and Deploy Container to DigitalOcean
+name: Run API tests
 
 on:
   push:
