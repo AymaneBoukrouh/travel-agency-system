@@ -8,5 +8,6 @@ urlpatterns = [
     path('login', TokenObtainPairView.as_view()),
     path('refresh', TokenRefreshView.as_view()),
     path('current_user', views.current_user),
-    path('offices', views.OfficeView.as_view())
+    path('offices', views.OfficeList.as_view()),
+    path('offices/<int:pk>', views.OfficeDetail.as_view()),
 ]

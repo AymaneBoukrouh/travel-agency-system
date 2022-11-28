@@ -6,7 +6,7 @@ from rest_framework import status
 
 # TODO: switch to mixins and generics
 
-class OfficeView(APIView):
+class OfficeList(APIView):
     def get(self, request):
         offices = Office.objects.all()
         serializer = OfficeSerializer(offices, many=True)
