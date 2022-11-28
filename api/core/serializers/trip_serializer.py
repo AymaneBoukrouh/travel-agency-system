@@ -4,4 +4,4 @@ from core.models import Trip
 class TripSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trip
-        fields = ['id', 'depature_date', 'return_date', 'destination', 'price', 'transport_mode']
+        fields = ['id', 'departure_date', 'arrival_date', 'destination', 'price', 'transport_mode']
