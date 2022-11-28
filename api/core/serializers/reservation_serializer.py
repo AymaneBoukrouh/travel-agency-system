@@ -4,4 +4,4 @@ from core.models import Reservation
 class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
-        fileds = ['id', 'number_of_people']
+        fields = ['id', 'number_of_people']
