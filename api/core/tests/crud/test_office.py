@@ -11,6 +11,7 @@ class OfficeCRUDTests(TestCase):
         '''
         Tests:
         1. create office
+        2. re-create office
         '''
 
         # 1. create office
@@ -33,3 +34,9 @@ class OfficeCRUDTests(TestCase):
         # check office added to database
         self.assertTrue(Office.objects.filter(city=payload['city']).exists())
 
+        # 2. re-create office
+        # make request
+        response = self.client.post('/api/offices', payload)
+
+        # check response
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
