@@ -24,7 +24,7 @@ class OfficeCRUDTests(TestCase):
         self.assertEqual(Office.objects.count(), 0)
 
         # make request
-        response = self.client.post('/api/office', payload)
+        response = self.client.post('/api/offices', payload)
 
         # check response
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
