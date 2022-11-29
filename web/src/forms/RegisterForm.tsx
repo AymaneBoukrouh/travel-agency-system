@@ -22,7 +22,7 @@ const LoginForm = () => {
         <TextField type="password" id="confirm-password" label="Confirm Password" variant="standard" fullWidth />
       </div>
       <div className="mb-3">
-        <Button variant="contained" className="rounded-pill px-5 py-2 me-3" style={{ backgroundColor: '#5ed0c1' }}>Login</Button>
+        <Button variant="contained" className="rounded-pill px-5 py-2 me-3" style={{ backgroundColor: '#5ed0c1' }}>Register</Button>
         <span className="text-muted">Already a member? <Link to="/login" style={{ color: '#5ed0c1' }}>Login</Link></span>
       </div>
     </FormControl>
