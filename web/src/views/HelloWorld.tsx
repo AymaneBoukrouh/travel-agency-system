@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { TextField, MenuItem } from '@mui/material';
 
+import logo from '../logo.svg';
+
 const HelloWorld = () => {
   // locale
   const locales = [
@@ -38,21 +40,24 @@ const HelloWorld = () => {
 
   return (
     <div>
-      <TextField
-        id = 'locale'
-        select
-        label = 'Locale'
-        value = {locale}
-        onChange = {handleLocaleChange}
-      >
-        {locales.map((option) => (
-          <MenuItem key={option.code} value={option.code}>
-            {option.name}
-          </MenuItem>
-        ))}
-      </TextField>
-      <div className="p-3">
-        {helloWorld}
+      <img src={logo} className="App-logo" alt="logo" />
+      <div>
+        <TextField
+            id = 'locale'
+            select
+            label = 'Locale'
+            value = {locale}
+            onChange = {handleLocaleChange}
+        >
+            {locales.map((option) => (
+            <MenuItem key={option.code} value={option.code}>
+                {option.name}
+            </MenuItem>
+            ))}
+        </TextField>
+        <div className="p-3">
+            {helloWorld}
+        </div>
       </div>
     </div>
   )
