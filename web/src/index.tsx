@@ -6,9 +6,11 @@ import  { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import HelloWorld from './views/HelloWorld';
-import Register from './views/Register';
-import Login from './views/Login';
 
+import Auth from './views/Auth';
+
+import RegisterForm from './forms/RegisterForm';
+import LoginForm from './forms/LoginForm';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
@@ -24,12 +26,17 @@ const router = createBrowserRouter([
         element: <HelloWorld />
       },
       {
-        path: 'login',
-        element: <Login />
-      },
-      {
-        path: 'register',
-        element: <Register />
+        element: <Auth />,
+        children: [
+          {
+            path: 'login',
+            element: <LoginForm />
+          },
+          {
+            path: 'register',
+            element: <RegisterForm />
+          }
+        ]
       }
     ]
   }
