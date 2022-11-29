@@ -4,10 +4,14 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'README.md'
+      - 'web/**'
 
   pull_request:
     branches:
-      - main
+      - 'README.md'
+      - 'web/**'
 
 jobs:
   build:
