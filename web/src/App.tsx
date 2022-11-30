@@ -12,8 +12,16 @@ function App() {
   // theme
   const darkTheme = createTheme({
     palette: {
-      mode: 'dark'
-    },
+      mode: 'dark',
+      primary: {
+        main: '#222f42',
+        light: '#2c3e50',
+        dark: '#1a2636'
+      },
+      secondary: {
+        main: '#5ed0c1'
+      }
+    }
   });
 
   return (

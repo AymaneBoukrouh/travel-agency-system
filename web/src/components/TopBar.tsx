@@ -5,19 +5,24 @@ import { AppBar, Toolbar, Typography } from '@mui/material';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
 
+import { useTheme } from '@mui/material';
+
 const TopBar = () => {
   const { user } = useAuthContext();
   const { logout } = useLogout();
 
+  const theme = useTheme();
+
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar style={{ backgroundColor: theme.palette.primary.dark}}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <div className="d-flex justify-content-center bg-dark">
+          <div className="d-flex justify-content-between">
             <div className="p-3">
                 <NavLink 
-                to="/hello_world"
-                className={({ isActive }) => isActive ? "nav-link text-primary" : "nav-link text-light"}
+                  to = "/hello_world"
+                  className = "nav-link"
+                  style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}
                 >
                     Hello World
                 </NavLink>
@@ -25,16 +30,18 @@ const TopBar = () => {
             {!user && <div className="d-flex">
               <div className="p-3">
                   <NavLink 
-                  to="/login"
-                  className={({ isActive }) => isActive ? "nav-link text-primary" : "nav-link text-light"}
+                    to = "/login"
+                    className = "nav-link"
+                    style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}
                   >
                   Login
                   </NavLink>
               </div>
               <div className="p-3">
                   <NavLink 
-                  to="/register" 
-                  className={({ isActive }) => isActive ? "nav-link text-primary" : "nav-link text-light"}
+                  to = "/register" 
+                  className = "nav-link"
+                  style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}
                   >
                   Register
                   </NavLink>

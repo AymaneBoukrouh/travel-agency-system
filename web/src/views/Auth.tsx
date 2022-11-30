@@ -1,10 +1,14 @@
 import { Outlet } from 'react-router-dom';
 
+import { useTheme } from '@mui/material';
+
 const Auth = () => {
+  const theme = useTheme();
+
   return (
-    <div className="container-fluid h-100" style={{ backgroundColor: '#222f42' }}>
+    <div className="container-fluid h-100" style={{ backgroundColor: theme.palette.primary.main }}>
       <div className="row h-100">
-        <div className="col-6" style={{ backgroundColor: '#5ed0c1' }}>
+        <div className="col-6" style={{ backgroundColor: theme.palette.secondary.main }}>
           <div className="d-flex justify-content-center align-items-center h-100">
             <img className="img-fluid w-75" src="/airlines.svg" alt="logo" />
           </div>
