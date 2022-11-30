@@ -19,7 +19,7 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className="h-100">
-        {/*<TopBar />*/}
+        <TopBar />
         <Outlet />
       </div>
     </ThemeProvider>
