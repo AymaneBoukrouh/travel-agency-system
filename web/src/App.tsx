@@ -1,9 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import { Outlet, NavLink } from 'react-router-dom';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import HelloWorld from './views/HelloWorld';
+
+import TopBar from './components/TopBar';
+
+import './App.css';
 
 function App() {
   // theme
@@ -15,11 +18,9 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <HelloWorld />
-        </header>
+      <div className="h-100">
+        <TopBar />
+        <Outlet />
       </div>
     </ThemeProvider>
   );
