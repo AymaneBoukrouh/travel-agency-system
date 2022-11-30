@@ -6,7 +6,7 @@ const Auth = () => {
       <div className="row h-100">
         <div className="col-6" style={{ backgroundColor: '#5ed0c1' }}>
           <div className="d-flex justify-content-center align-items-center h-100">
-            <img className="img-fluid w-100" src="/airlines.svg" alt="logo" />
+            <img className="img-fluid w-75" src="/airlines.svg" alt="logo" />
           </div>
         </div>
         <div className="col-6">
