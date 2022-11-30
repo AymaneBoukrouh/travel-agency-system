@@ -19,7 +19,9 @@ function App() {
         dark: '#1a2636'
       },
       secondary: {
-        main: '#5ed0c1'
+        main: '#5ed0c1',
+        light: '#8ee6d8',
+        dark: '#2ca897'
       }
     }
   });
