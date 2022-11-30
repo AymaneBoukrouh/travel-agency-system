@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { TextField, MenuItem } from '@mui/material';
+import { TextField, MenuItem, useTheme } from '@mui/material';
 
 import logo from '../logo.svg';
 
@@ -38,8 +38,11 @@ const HelloWorld = () => {
     updateHelloWorld();
   }, [locale]);
 
+  // theme
+  const theme = useTheme();
+
   return (
-    <div>
+    <div className="d-flex flex-column justify-content-center align-items-center h-100" style={{ backgroundColor: theme.palette.primary.dark }}>
       <img src={logo} className="App-logo" alt="logo" />
       <div>
         <TextField
@@ -55,7 +58,7 @@ const HelloWorld = () => {
             </MenuItem>
             ))}
         </TextField>
-        <div className="p-3">
+        <div className="p-3 text-light text-center">
             {helloWorld}
         </div>
       </div>
