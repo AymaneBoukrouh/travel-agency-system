@@ -5,6 +5,8 @@ import { AppBar, Toolbar, Typography } from '@mui/material';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
 
+import { useTranslation } from 'react-i18next';
+
 import { useTheme } from '@mui/material';
 
 const TopBar = () => {
@@ -12,6 +14,8 @@ const TopBar = () => {
   const { logout } = useLogout();
 
   const theme = useTheme();
+
+  const { t, i18n } = useTranslation();
 
   return (
     <AppBar position="static">
@@ -24,7 +28,7 @@ const TopBar = () => {
                   className = "nav-link"
                   style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}
                 >
-                    Hello World
+                    {t('Hello')}
                 </NavLink>
             </div>
             {!user && <div className="d-flex">

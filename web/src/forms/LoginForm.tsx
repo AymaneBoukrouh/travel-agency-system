@@ -23,10 +23,10 @@ const LoginForm = () => {
         <FormLabel component="legend"><h2>Login</h2></FormLabel>
         {error && <div className="alert alert-danger">{error}</div>}
         <div className="mb-3">
-          <TextField id="email" label="E-Mail" variant="standard" onChange={(e)=>setEmail(e.target.value)} fullWidth />
+          <TextField id="email" label="E-Mail" variant="standard" color="secondary" onChange={(e)=>setEmail(e.target.value)} fullWidth />
         </div>
         <div className="mb-3">
-          <TextField type="password" id="password" label="Password" onChange={(e)=>setPassword(e.target.value)} variant="standard" fullWidth />
+          <TextField type="password" id="password" label="Password" color="secondary" onChange={(e)=>setPassword(e.target.value)} variant="standard" fullWidth />
         </div>
         <div className="mb-3">
           <Button variant="contained" type="submit" className="rounded-pill px-5 py-2 me-3" disabled={isLoading} style={{ backgroundColor: '#5ed0c1' }}>Login</Button>

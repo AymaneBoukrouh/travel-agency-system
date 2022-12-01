@@ -6,6 +6,7 @@ import  { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 
 import './index.css';
+import './i18n';
 import App from './App';
 import HelloWorld from './views/HelloWorld';
 
