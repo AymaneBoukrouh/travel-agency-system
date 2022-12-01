@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 import { TextField, MenuItem, useTheme } from '@mui/material';
 
 import logo from '../logo.svg';
 
 const HelloWorld = () => {
   // locale
+  const { i18n } = useTranslation();
+
   const locales = [
     { code: 'en-US', name: 'English' },
     { code: 'fr-FR', name: 'Français' },
@@ -16,6 +20,7 @@ const HelloWorld = () => {
 
   const handleLocaleChange = (event: any) => {
     setLocale(event.target.value);
+    i18n.changeLanguage(event.target.value);
     localStorage.setItem('locale', event.target.value);
   }
 
