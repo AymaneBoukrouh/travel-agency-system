@@ -4,6 +4,7 @@ import App from '../App';
 import HelloWorld from '../views/HelloWorld';
 
 import Auth from '../views/Auth';
+import Home from '../views/Home';
 
 import RegisterForm from '../forms/RegisterForm';
 import LoginForm from '../forms/LoginForm';
