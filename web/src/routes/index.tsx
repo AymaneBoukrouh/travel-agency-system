@@ -9,7 +9,6 @@ import RegisterForm from '../forms/RegisterForm';
 import LoginForm from '../forms/LoginForm';
 
 
-// router
 const router = createBrowserRouter([
   {
     path: '/',
@@ -18,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: 'hello_world',
         element: <HelloWorld />
+      },
+      {
+        path: 'home',
+        element: <Home />
       },
       {
         element: <Auth />,
