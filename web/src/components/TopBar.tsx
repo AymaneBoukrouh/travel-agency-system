@@ -32,6 +32,15 @@ const TopBar = () => {
                 </NavLink>
             </div>
             {!user && <div className="d-flex">
+            <div className="p-3">
+                  <NavLink 
+                  to = "/home" 
+                  className = "nav-link"
+                  style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}
+                  >
+                    Home
+                  </NavLink>
+              </div>
               <div className="p-3">
                   <NavLink 
                     to = "/login"
