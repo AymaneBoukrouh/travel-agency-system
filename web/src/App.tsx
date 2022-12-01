@@ -14,9 +14,9 @@ function App() {
     palette: {
       mode: 'dark',
       primary: {
-        main: '#222f42',
-        light: '#2c3e50',
-        dark: '#1a2636'
+        main: '#21033a',
+        light: '#230a4a',
+        dark: '#1a022d'
       },
       secondary: {
         main: '#5ed0c1',
