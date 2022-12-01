@@ -26,19 +26,19 @@ const LoginForm = () => {
         <FormLabel component="legend"><h2>Register</h2></FormLabel>
         {error && <div className="alert alert-danger">{error}</div>}
         <div className="mb-3">
-          <TextField id="first-name" label="First Name" variant="standard" onChange={(e)=>setFirstname(e.target.value)} fullWidth />
+          <TextField id="first-name" label="First Name" variant="standard" color="secondary" onChange={(e)=>setFirstname(e.target.value)} fullWidth />
         </div>
         <div className="mb-3">
-          <TextField id="last-name" label="Last Name" variant="standard" onChange={(e)=>setLastname(e.target.value)} fullWidth />
+          <TextField id="last-name" label="Last Name" variant="standard" color="secondary" onChange={(e)=>setLastname(e.target.value)} fullWidth />
         </div>
         <div className="mb-3">
-          <TextField id="email" label="E-Mail" variant="standard" onChange={(e)=>setEmail(e.target.value)} fullWidth />
+          <TextField id="email" label="E-Mail" variant="standard" color="secondary" onChange={(e)=>setEmail(e.target.value)} fullWidth />
         </div>
         <div className="mb-3">
-          <TextField type="password" id="password" label="Password" variant="standard" onChange={(e)=>setPassword(e.target.value)} fullWidth />
+          <TextField type="password" id="password" label="Password" color="secondary" variant="standard" onChange={(e)=>setPassword(e.target.value)} fullWidth />
         </div>
         <div className="mb-3">
-          <TextField type="password" id="confirm-password" label="Confirm Password" variant="standard" onChange={(e)=>setConfirmPassword(e.target.value)} fullWidth />
+          <TextField type="password" id="confirm-password" label="Confirm Password" variant="standard" color="secondary" onChange={(e)=>setConfirmPassword(e.target.value)} fullWidth />
         </div>
         <div className="mb-3">
           <Button variant="contained" type="submit" className="rounded-pill px-5 py-2 me-3" style={{ backgroundColor: '#5ed0c1' }} disabled={isLoading}>Register</Button>

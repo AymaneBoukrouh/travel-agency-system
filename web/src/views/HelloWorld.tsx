@@ -51,6 +51,7 @@ const HelloWorld = () => {
             label = 'Locale'
             value = {locale}
             onChange = {handleLocaleChange}
+            color = 'secondary'
         >
             {locales.map((option) => (
             <MenuItem key={option.code} value={option.code}>
