@@ -1,21 +1,19 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+
+import englishTranslations from './locale/en';
+import frenchTranslations from './locale/fr';
+import germanTranslations from './locale/de';
 
 const resources = {
   'en-US': {
-    translation: {
-      "Hello": "Hello"
-    }
+    translation: englishTranslations
   },
   'fr-FR': {
-    translation: {
-      "Hello": "Bonjour"
-    }
+    translation: frenchTranslations
   },
   'de-DE': {
-    translation: {
-      "Hello": "Hallo"
-    }
+    translation: germanTranslations
   }
 };
 
