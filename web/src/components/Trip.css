@@ -2,12 +2,20 @@
   overflow: hidden;
 }
 
-.trip-img {
-  object-fit: cover;
-  transition: transform 0.1s ease-in;
+.trip-img-wrapper-box {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
-.trip-img:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease-in;
+.trip-img-wrapper > .trip-img-wrapper-box {
+  transition: transform 0.5s;
+}
+
+.trip-img-wrapper:hover > .trip-img-wrapper-box {
+  transform: translateY(-100%);
+  transition: transform 0.5s;
+}
+
+.trip-img {
+  object-fit: cover;
 }
