@@ -22,17 +22,17 @@ const TopBar = () => {
       <Toolbar style={{ backgroundColor: theme.palette.primary.dark}}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <div className="d-flex justify-content-between">
-            <div className="p-3">
-                <NavLink 
-                  to = "/hello_world"
-                  className = "nav-link"
-                  style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}
-                >
-                    {t('Hello')}
-                </NavLink>
-            </div>
-            {!user && <div className="d-flex">
-            <div className="p-3">
+            <div className="d-flex">
+              <div className="p-3">
+                  <NavLink 
+                    to = "/hello_world"
+                    className = "nav-link"
+                    style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}
+                  >
+                      {t('Hello')}
+                  </NavLink>
+              </div>
+              <div className="p-3">
                   <NavLink 
                   to = "/home" 
                   className = "nav-link"
@@ -41,6 +41,8 @@ const TopBar = () => {
                     Home
                   </NavLink>
               </div>
+            </div>
+            {!user && <div className="d-flex">
               <div className="p-3">
                   <NavLink 
                     to = "/login"

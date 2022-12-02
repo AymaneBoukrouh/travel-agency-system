@@ -1,9 +1,19 @@
 import { Outlet } from 'react-router-dom';
 
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
+
 import { useTheme } from '@mui/material';
 
 const Auth = () => {
   const theme = useTheme();
+
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
+
+  if (user) {
+    navigate('/home');
+  }
 
   return (
     <div className="container-fluid h-100" style={{ backgroundColor: theme.palette.primary.main }}>
