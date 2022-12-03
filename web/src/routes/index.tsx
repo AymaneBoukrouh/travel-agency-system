@@ -5,6 +5,7 @@ import HelloWorld from '../views/HelloWorld';
 
 import Auth from '../views/Auth';
 import Trips from '../views/Trips';
+import Dashboard from '../views/Dashboard';
 
 import RegisterForm from '../forms/RegisterForm';
 import LoginForm from '../forms/LoginForm';
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: 'trips',
         element: <Trips />
+      },
+      {
+        path: 'dashboard',
+        element: <Dashboard />
       },
       {
         element: <Auth />,
