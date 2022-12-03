@@ -5,15 +5,22 @@ interface RegisterData {
   lastname: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 export const useRegister = () => {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const register = async (user: RegisterData) => {
     setIsLoading(true);
-    setError(null);
+    setError('');
+
+    if (user.password !== user.confirmPassword) {
+      setError('Passwords do not match!');
+      setIsLoading(false);
+      return;
+    }
 
     const response = await fetch('http://localhost:8000/api/register', {
       method: 'POST',
@@ -31,6 +38,7 @@ export const useRegister = () => {
       return;
     }
 
+    setError('Account created successfully!');
     setIsLoading(false);
   }
 

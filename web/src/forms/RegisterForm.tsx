@@ -5,6 +5,7 @@ import { useRegister } from '../hooks/useRegister';
 import { Link } from 'react-router-dom';
 
 import { FormControl, FormLabel, TextField, Button } from '@mui/material';
+import { useTheme } from '@mui/material';
 
 const LoginForm = () => {
   const [firstname, setFirstname] = useState('');
@@ -17,8 +18,10 @@ const LoginForm = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    await register({ firstname, lastname, email, password });
+    await register({ firstname, lastname, email, password, confirmPassword });
   }
+
+  const theme = useTheme();
 
   return (
     <form onSubmit={handleSubmit}>
@@ -41,7 +44,17 @@ const LoginForm = () => {
           <TextField type="password" id="confirm-password" label="Confirm Password" variant="standard" color="secondary" onChange={(e)=>setConfirmPassword(e.target.value)} fullWidth />
         </div>
         <div className="mb-3">
-          <Button variant="contained" type="submit" className="rounded-pill px-5 py-2 me-3" style={{ backgroundColor: '#5ed0c1' }} disabled={isLoading}>Register</Button>
+        <Button 
+            variant = "contained" 
+            type = "submit"
+            className = "rounded-pill px-5 py-2 me-3" 
+            disabled = {isLoading} 
+            style = {{ 
+              backgroundColor: theme.palette.secondary.main, 
+              color: theme.palette.primary.main
+            }}>
+              Register
+            </Button>
           <span className="text-muted">Already a member? <Link to="/login" style={{ color: '#5ed0c1' }}>Login</Link></span>
         </div>
       </FormControl>
