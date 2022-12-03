@@ -8,14 +8,14 @@ interface LoginData {
 }
 
 export const useLogin = () => {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const { dispatch } = useAuthContext();
 
   const login = async (user: LoginData) => {
     setIsLoading(true);
-    setError(null);
+    setError('');
 
     const response = await fetch('http://localhost:8000/api/login', {
       method: 'POST',
@@ -27,8 +27,14 @@ export const useLogin = () => {
 
     const data = await response.json();
 
+    if (response.status === 401) {
+      setError('Invalid credentials');
+      setIsLoading(false);
+      return;
+    }
+
     if (!response.ok) {
-      setError(data.message);
+      setError('An error occurred');
       setIsLoading(false);
       return;
     }
