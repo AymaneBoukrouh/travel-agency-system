@@ -3,18 +3,23 @@
 }
 
 .trip-img-box {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 20px;
 }
 
 .trip-img-wrapper > .trip-img-box {
-  transition: transform 0.5s;
+  transition: transform 0.5s ease-in-out;
 }
 
 .trip-img-wrapper:hover > .trip-img-box {
-  transform: translateY(-100%);
-  transition: transform 0.5s;
+  transform: translateY(-95%);
+  transition: transform 0.5s ease-in-out;
 }
 
 .trip-img {
   object-fit: cover;
+}
+
+.rotate-45 {
+  transform: rotate(45deg);
 }

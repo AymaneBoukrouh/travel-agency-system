@@ -34,11 +34,11 @@ const TopBar = () => {
               </div>
               <div className="p-3">
                   <NavLink 
-                  to = "/home" 
+                  to = "/trips" 
                   className = "nav-link"
                   style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}
                   >
-                    Home
+                    {t('Trips')}
                   </NavLink>
               </div>
             </div>

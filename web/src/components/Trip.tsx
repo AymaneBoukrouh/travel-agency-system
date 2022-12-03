@@ -1,9 +1,19 @@
+import { AirplaneFill, TrainFrontFill, BusFrontFill, SuitHeart, SuitHeartFill, Building } from 'react-bootstrap-icons';
+
+import { Button, Checkbox } from '@mui/material';
+
 import './Trip.css';
 
 interface TripProps {
   id: number;
   name: string;
   image: string;
+  price: number;
+  office: string;
+  nights: number;
+  cities: string[];
+  places: number;
+  left: number;
 }
 
 const Trip = (trip: TripProps) => {
@@ -11,14 +21,42 @@ const Trip = (trip: TripProps) => {
     <div className="trip-wrapper">
       <div className="trip-img-wrapper position-relative rounded-3 mb-3 w-100 ratio ratio-1x1">
         <img className="trip-img img-fluid ratio ratio-1x1" src={trip.image} alt="Trip" />
-        <div className="trip-img-box d-flex justify-content-center align-items-center position-absolute top-100 w-100 h-100 rounded-3">
-          <div className="h2">
-            {trip.name}
+        <div className="trip-img-box d-flex flex-column position-absolute top-100 w-100 h-100 rounded-3 p-3">
+          <div className="position-absolute top-0 end-0 m-3 rounded-3">
+            <Checkbox icon={<SuitHeart size={30} />} checkedIcon={<SuitHeartFill size={30} />} color="secondary" />
+          </div>
+          <div className="d-flex mb-3">
+            <Building size={30} className="text-white me-2" />
+            <h4>{trip.office}</h4>
+          </div>
+          <div>
+            {trip.nights} nights
+          </div>
+          <div>
+            {trip.cities.length} {trip.cities.length > 1 ? 'cities' : 'city'}
+          </div>
+          <div>
+           {trip.places} places ({trip.left} left)
+          </div>
+          <div className="d-flex justify-content-center">
+            <Button variant="contained" className="bg-light text-dark mt-3">Details</Button> 
           </div>
         </div>
       </div>
-      <h3>{trip.name}</h3>
-      <div>Starting from $430</div>
+      <div className="d-flex justify-content-between px-2">
+        <div className="d-flex mb-2">
+          <div className="me-2">
+            <AirplaneFill className="rotate-45" />
+          </div>
+          <div className="me-2">
+            <TrainFrontFill />
+          </div>
+          <div className="me-2">
+            <BusFrontFill />
+          </div>
+        </div>
+        <div>from <b>${trip.price}</b></div>
+      </div>
     </div>
   )
 };

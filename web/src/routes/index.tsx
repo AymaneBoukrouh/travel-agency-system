@@ -4,7 +4,7 @@ import App from '../App';
 import HelloWorld from '../views/HelloWorld';
 
 import Auth from '../views/Auth';
-import Home from '../views/Home';
+import Trips from '../views/Trips';
 
 import RegisterForm from '../forms/RegisterForm';
 import LoginForm from '../forms/LoginForm';
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
         element: <HelloWorld />
       },
       {
-        path: 'home',
-        element: <Home />
+        path: 'trips',
+        element: <Trips />
       },
       {
         element: <Auth />,
