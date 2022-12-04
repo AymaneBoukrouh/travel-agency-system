@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# bin and obj directories
+**/[Bb]in
+**/[Oo]bj
+
 # User-specific files
 *.rsuser
 *.suo
