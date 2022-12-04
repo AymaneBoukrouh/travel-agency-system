@@ -7,9 +7,6 @@ const Dashboard = () => {
     <div className="container-fluid d-flex h-100 p-0">
       <DashboardSideBar />
       <Outlet />
-      {/*<div className="flex-grow-1 p-3">
-        <h1>Dashboard</h1>
-      </div>*/}
     </div>
   )
 }
