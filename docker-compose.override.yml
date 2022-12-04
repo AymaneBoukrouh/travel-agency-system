@@ -23,5 +23,11 @@ services:
     volumes:
     - ./db:/var/lib/mysql
 
+  hotel:
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development 
+    ports:
+    - 5005:80
+
 volumes:
   db:

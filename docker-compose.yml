@@ -28,3 +28,8 @@ services:
     container_name: travel_agency_system_db
     ports:
     - 3306:3306
+
+  hotel:
+    build: ./microservices/hotel
+    container_name: hotel_microservice
+  
