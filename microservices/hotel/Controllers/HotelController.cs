@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using hotel.Models;
 
 namespace hotel.Controllers;
 
@@ -18,8 +19,8 @@ public class HotelController : ControllerBase
     {
         return Enumerable.Range(1, 5).Select(index => new Hotel
         {
-            name = "Hotel",
-            city = "City"
+            Name = "Hotel",
+            City = "City"
         })
         .ToArray();
     }
