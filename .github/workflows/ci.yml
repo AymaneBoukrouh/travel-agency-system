@@ -7,11 +7,13 @@ on:
     paths-ignore:
       - 'README.md'
       - 'web/**'
+      - 'microservices/**'
 
   pull_request:
     branches:
       - 'README.md'
       - 'web/**'
+      - 'microservices/**'
 
 jobs:
   build:
