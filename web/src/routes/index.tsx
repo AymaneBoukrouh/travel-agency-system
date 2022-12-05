@@ -6,6 +6,11 @@ import HelloWorld from '../views/HelloWorld';
 import Auth from '../views/Auth';
 import Trips from '../views/Trips';
 
+import Dashboard from '../views/dashboard/Dashboard';
+import DashboardMain from '../views/dashboard/DashboardMain';
+import DashboardUsers from '../views/dashboard/DashboardUsers';
+import DashboardSettings from '../views/dashboard/DashboardSettings';
+
 import RegisterForm from '../forms/RegisterForm';
 import LoginForm from '../forms/LoginForm';
 
@@ -22,6 +27,24 @@ const router = createBrowserRouter([
       {
         path: 'trips',
         element: <Trips />
+      },
+      {
+        path: 'dashboard',
+        element: <Dashboard />,
+        children: [
+          {
+            path: '',
+            element: <DashboardMain />
+          },
+          {
+            path: 'users',
+            element: <DashboardUsers />
+          },
+          {
+            path: 'settings',
+            element: <DashboardSettings />
+          }
+        ]
       },
       {
         element: <Auth />,
