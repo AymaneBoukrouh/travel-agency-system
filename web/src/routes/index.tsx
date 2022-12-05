@@ -7,7 +7,7 @@ import Auth from '../views/Auth';
 import Trips from '../views/Trips';
 
 import Dashboard from '../views/dashboard/Dashboard';
-import DashboardStats from '../views/dashboard/DashboardStats';
+import DashboardMain from '../views/dashboard/DashboardMain';
 import DashboardUsers from '../views/dashboard/DashboardUsers';
 import DashboardSettings from '../views/dashboard/DashboardSettings';
 
@@ -33,8 +33,7 @@ const router = createBrowserRouter([
         element: <Dashboard />,
         children: [
           {
-            path: 'stats',
-            element: <DashboardStats />
+            element: <DashboardMain />
           },
           {
             path: 'users',

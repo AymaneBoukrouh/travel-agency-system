@@ -12,7 +12,7 @@ const DashboardSideBar = () => {
   return (
     <div className="m-3" style={{ backgroundColor: theme.palette.primary.main, borderRadius: '20px' }}>
       <div className="d-flex flex-column gap-3 py-5">
-        <DashboardNavLink to="/dashboard/stats" Icon={Dashboard} />
+        <DashboardNavLink to="/dashboard" Icon={Dashboard} />
         <DashboardNavLink to="/dashboard/users" Icon={People} />
         <DashboardNavLink to="/dashboard/settings" Icon={Settings} />
       </div>

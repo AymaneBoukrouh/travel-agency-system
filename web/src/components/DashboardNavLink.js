@@ -14,6 +14,7 @@ const DashboardNavLink = ({ to, Icon }) => {
   return (
   <div className="position-relative">
     <NavLink
+      end
       to = {to}
       className={({ isActive }) => isActive  ? setIsActiveNavLink(true) : setIsActiveNavLink(false) }
     >
