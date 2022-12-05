@@ -16,6 +16,7 @@
     "@types/react-dom": "^18.0.9",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.2",
+    "chartjs": "^0.3.24",
     "i18next": "^22.0.6",
     "json-loader": "^0.5.7",
     "react": "^18.2.0",
