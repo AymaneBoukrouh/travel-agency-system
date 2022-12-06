@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 
 import { useTopBar } from '@/hooks/useTopBar';
 
-import DashboardSideBar from '@/components/DashboardSideBar';
+import DashboardSideBar from '@/components/dashboard/SideBar';
 
 const Dashboard = () => {
   const dashboardColor = '#403294';

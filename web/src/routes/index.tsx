@@ -10,9 +10,9 @@ import RegisterForm from '@/forms/RegisterForm';
 import LoginForm from '@/forms/LoginForm';
 
 import Dashboard from '@/views/dashboard/Dashboard';
-import DashboardMain from '@/views/dashboard/DashboardMain';
-import DashboardUsers from '@/views/dashboard/DashboardUsers';
-import DashboardSettings from '@/views/dashboard/DashboardSettings';
+import DashboardMain from '@/views/dashboard/Main';
+import DashboardUsers from '@/views/dashboard/Users';
+import DashboardSettings from '@/views/dashboard/Settings';
 
 const router = createBrowserRouter([
   {

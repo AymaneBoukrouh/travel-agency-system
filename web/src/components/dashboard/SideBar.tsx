@@ -1,13 +1,13 @@
 import { useTheme } from '@mui/material';
 import { Dashboard, People, Settings } from '@mui/icons-material';
 
-import DashboardNavLink from '@/components/DashboardNavLink';
+import DashboardNavLink from '@/components/dashboard/NavLink';
 
-interface DashboardSideBarProps {
+interface SideBarProps {
   backgroundColor: string;
 }
 
-const DashboardSideBar = (props: DashboardSideBarProps) => {
+const SideBar = (props: SideBarProps) => {
   return (
     <div className="m-3" style={{ backgroundColor: props.backgroundColor, borderRadius: '20px' }}>
       <div className="d-flex flex-column gap-3 py-5">
@@ -19,4 +19,4 @@ const DashboardSideBar = (props: DashboardSideBarProps) => {
   )
 }
 
-export default DashboardSideBar;
+export default SideBar;

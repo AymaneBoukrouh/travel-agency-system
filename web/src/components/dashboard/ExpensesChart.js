@@ -5,7 +5,7 @@ import ChartLegendItem from '@/components/ChartLegendItem';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DashboardExpenses = () => {
+const ExpensesChart = () => {
   const CHART_COLORS = {
     red: 'rgb(255, 99, 132)',
     orange: 'rgb(255, 159, 64)',
@@ -78,4 +78,4 @@ const DashboardExpenses = () => {
   )
 }
 
-export default DashboardExpenses;
+export default ExpensesChart;

@@ -6,7 +6,7 @@ import ChartLegendItem from '@/components/ChartLegendItem';
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement);
 
 
-const DashboardVisits = () => {
+const VisitsChart = () => {
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
@@ -61,4 +61,4 @@ const DashboardVisits = () => {
   )
 }
 
-export default DashboardVisits;
+export default VisitsChart;

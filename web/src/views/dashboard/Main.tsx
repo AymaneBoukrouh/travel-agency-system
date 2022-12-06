@@ -1,11 +1,11 @@
 import { Card } from '@mui/material';
 import { People, Visibility, Tour, Apartment } from '@mui/icons-material';
 
-import DashboardExpenses from '@/components/DashboardExpenses';
-import DashboardStatItem from '@/components/DashboardStatItem';
-import DashboardVisits from '@/components/DashboardVisits';
+import DashboardExpenses from '@/components/dashboard/ExpensesChart';
+import DashboardVisits from '@/components/dashboard/VisitsChart';
+import DashboardStatItem from '@/components/dashboard/StatCard';
 
-const DashboardMain = () => {
+const Main = () => {
 
   return (
     <div className="container-fluid">
@@ -46,4 +46,4 @@ const DashboardMain = () => {
   )
 }
 
-export default DashboardMain;
+export default Main;
