@@ -1,6 +1,7 @@
 import  { createBrowserRouter } from 'react-router-dom';
 
 import App from '@/App';
+import Error from '@/views/Error';
 import HelloWorld from '@/views/HelloWorld';
 import Trips from '@/views/Trips';
 
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: 'hello_world',
@@ -56,6 +58,10 @@ const router = createBrowserRouter([
             element: <RegisterForm />
           }
         ]
+      },
+      {
+        path: '*',
+        element: <Error />
       }
     ]
   }
