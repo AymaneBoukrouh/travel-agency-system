@@ -4,6 +4,7 @@ import  { RouterProvider } from 'react-router-dom';
 
 import router from '@/routes';
 import { AuthProvider } from '@/context/AuthContext';
+import { TopBarProvider } from '@/context/TopBarContext';
 
 // internationalization
 import './i18n';
@@ -22,7 +23,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <TopBarProvider>
+        <RouterProvider router={router} />
+      </TopBarProvider>
     </AuthProvider>
   </React.StrictMode>
 );
