@@ -16,4 +16,5 @@ urlpatterns = [
     path('reservations/<int:pk>', views.ReservationDetail.as_view()),
     path('trips', views.TripList.as_view()),
     path('trips/<int:pk>', views.TripDetail.as_view()),
+    path('saved_trips', views.SavedTripListAndDelete.as_view()),
 ]
