@@ -10,5 +10,5 @@ class Trip(models.Model):
 
     office = models.ForeignKey('Office', on_delete=models.CASCADE)
 
-    # TODO: add number of nights
-    # TODO: add different price for adults and children
+    def nights(self):
+        return (self.arrival_date - self.departure_date).days
