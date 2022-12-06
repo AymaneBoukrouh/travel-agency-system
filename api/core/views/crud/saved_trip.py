@@ -20,4 +20,7 @@ class SavedTripListAndDelete(mixins.ListModelMixin, mixins.CreateModelMixin, mix
     def perform_create(self, serializer):
         trip = Trip.objects.get(id=self.request.data['trip_id'])
         user = User.objects.get(id=self.request.data['user_id'])
-        serializer.save(trip=trip, user=user)
+
+        # check if the user has already saved the trip
+        if not SavedTrip.objects.filter(trip=trip, user=user).exists():
+            serializer.save(trip=trip, user=user)
