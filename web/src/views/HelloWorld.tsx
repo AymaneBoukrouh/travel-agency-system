@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { TextField, MenuItem, useTheme } from '@mui/material';
 
-import logo from '../logo.svg';
+import logo from '@/logo.svg';
 
 const HelloWorld = () => {
   // locale

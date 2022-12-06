@@ -1,6 +1,6 @@
-import Trips from '../components/Trips';
-
 import { useTheme } from '@mui/material';
+
+import Trips from '@/components/Trips';
 
 const Auth = () => {
   const theme = useTheme();

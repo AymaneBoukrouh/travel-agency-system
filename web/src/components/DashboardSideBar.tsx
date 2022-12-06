@@ -1,10 +1,7 @@
-import { NavLink } from 'react-router-dom'
-
 import { useTheme } from '@mui/material';
-
 import { Dashboard, People, Settings } from '@mui/icons-material';
 
-import DashboardNavLink from './DashboardNavLink';
+import DashboardNavLink from '@/components/DashboardNavLink';
 
 const DashboardSideBar = () => {
   const theme = useTheme();

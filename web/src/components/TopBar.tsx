@@ -1,13 +1,11 @@
 import { NavLink } from 'react-router-dom';
 
-import { AppBar, Toolbar, Typography } from '@mui/material';
-
-import { useAuthContext } from '../hooks/useAuthContext';
-import { useLogout } from '../hooks/useLogout';
-
 import { useTranslation } from 'react-i18next';
 
-import { useTheme } from '@mui/material';
+import { useTheme, AppBar, Toolbar, Typography } from '@mui/material';
+
+import { useAuthContext } from '@/hooks/useAuthContext';
+import { useLogout } from '@/hooks/useLogout';
 
 const TopBar = () => {
   const { user } = useAuthContext();
@@ -15,7 +13,7 @@ const TopBar = () => {
 
   const theme = useTheme();
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <AppBar position="static">

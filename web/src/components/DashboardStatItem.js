@@ -1,5 +1,4 @@
 import { Card } from '@mui/material';
-import { Tour } from '@mui/icons-material';
 
 const DashboardStatItem = ({ value, name, comment, Icon, iconColor }) => {
   return (

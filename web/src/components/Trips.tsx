@@ -1,4 +1,4 @@
-import Trip from './Trip';
+import Trip from '@/components/Trip';
 
 interface TripsProps {
   title: string;

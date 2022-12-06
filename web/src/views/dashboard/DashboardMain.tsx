@@ -1,9 +1,9 @@
-import DashboardExpenses from '../../components/DashboardExpenses';
-import DashboardStatItem from '../../components/DashboardStatItem';
-import DashboardVisits from '../../components/DashboardVisits';
-
 import { Card } from '@mui/material';
 import { People, Visibility, Tour, Apartment } from '@mui/icons-material';
+
+import DashboardExpenses from '@/components/DashboardExpenses';
+import DashboardStatItem from '@/components/DashboardStatItem';
+import DashboardVisits from '@/components/DashboardVisits';
 
 const DashboardMain = () => {
 

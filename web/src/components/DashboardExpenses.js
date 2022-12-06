@@ -1,7 +1,7 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-import ChartLegendItem from './ChartLegendItem';
+import ChartLegendItem from '@/components/ChartLegendItem';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -40,7 +40,7 @@ const DashboardExpenses = () => {
             let sum = 0;
             let dataArr = ctx.chart.data.datasets[0].data;
             dataArr.map(data => {
-                sum += data;
+                return sum += data;
             });
             let percentage = (value*100 / sum).toFixed(2)+"%";
             return percentage;

@@ -1,11 +1,11 @@
 import { useState, FormEvent } from 'react';
 
-import { useRegister } from '../hooks/useRegister';
-
 import { Link } from 'react-router-dom';
 
 import { FormControl, FormLabel, TextField, Button } from '@mui/material';
 import { useTheme } from '@mui/material';
+
+import { useRegister } from '@/hooks/useRegister';
 
 const LoginForm = () => {
   const [firstname, setFirstname] = useState('');

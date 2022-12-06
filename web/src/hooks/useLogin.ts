@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useAuthContext } from './useAuthContext';
+import { useAuthContext } from '@/hooks/useAuthContext';
 
 interface LoginData {
   email: string;

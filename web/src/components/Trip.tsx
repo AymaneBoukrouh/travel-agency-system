@@ -2,7 +2,7 @@ import { AirplaneFill, TrainFrontFill, BusFrontFill, SuitHeart, SuitHeartFill, B
 
 import { Button, Checkbox } from '@mui/material';
 
-import './Trip.css';
+import '@/components/Trip.css';
 
 interface TripProps {
   id: number;

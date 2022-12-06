@@ -1,12 +1,10 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import HelloWorld from './views/HelloWorld';
+import TopBar from '@/components/TopBar';
 
-import TopBar from './components/TopBar';
-
-import './App.css';
+import '@/App.css';
 
 function App() {
   // theme

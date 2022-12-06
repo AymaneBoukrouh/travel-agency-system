@@ -2,9 +2,7 @@ import { useState } from 'react';
 
 import { NavLink } from 'react-router-dom'
 
-import { useTheme, MuiIcon } from '@mui/material';
-
-
+import { useTheme } from '@mui/material';
 
 const DashboardNavLink = ({ to, Icon }) => {
   const [isActiveNavLink, setIsActiveNavLink] = useState(false);

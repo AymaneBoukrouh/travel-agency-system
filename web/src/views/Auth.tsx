@@ -1,9 +1,8 @@
-import { Outlet } from 'react-router-dom';
-
-import { useAuthContext } from '../hooks/useAuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import { useTheme } from '@mui/material';
+
+import { useAuthContext } from '@/hooks/useAuthContext';
 
 const Auth = () => {
   const theme = useTheme();

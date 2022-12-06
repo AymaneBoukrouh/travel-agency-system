@@ -1,11 +1,11 @@
 import { useState, FormEvent } from 'react';
 
-import { useLogin } from '../hooks/useLogin';
-
 import { Link } from 'react-router-dom';
 
 import { FormControl, FormLabel, TextField, Button } from '@mui/material';
 import { useTheme } from '@mui/material';
+
+import { useLogin } from '@/hooks/useLogin';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');

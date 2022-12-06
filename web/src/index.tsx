@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-import router from './routes';
 import  { RouterProvider } from 'react-router-dom';
 
-import { AuthProvider } from './context/AuthContext';
+import router from '@/routes';
+import { AuthProvider } from '@/context/AuthContext';
 
-import './index.css';
+// internationalization
 import './i18n';
 
+// bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
+
+// custom styles
+import './index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
