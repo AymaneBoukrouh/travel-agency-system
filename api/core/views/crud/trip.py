@@ -1,4 +1,4 @@
-from core.models import Trip
+from core.models import Trip, Office
 from core.serializers import TripSerializer
 from rest_framework import mixins, generics
 
@@ -12,6 +12,10 @@ class TripList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericA
 
     def post(self, request):
         return self.create(request)
+
+    def perform_create(self, serializer):
+        office = Office.objects.get(id=self.request.data['office_id'])
+        serializer.save(office=office)
 
 
 class TripDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
