@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
+
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { useTheme } from '@mui/material';
 
 import { useAuthContext } from '@/hooks/useAuthContext';
+import { useTopBar } from '@/hooks/useTopBar';
 
 const Auth = () => {
   const theme = useTheme();
@@ -13,6 +16,12 @@ const Auth = () => {
   if (user) {
     navigate('/trips');
   }
+
+  const { setTopBarBackgroundColor } = useTopBar();
+
+  useEffect(() => {
+    setTopBarBackgroundColor(theme.palette.primary.dark);
+  }, [])
 
   return (
     <div className="container-fluid h-100" style={{ backgroundColor: theme.palette.primary.main }}>

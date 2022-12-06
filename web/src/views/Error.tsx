@@ -1,9 +1,19 @@
+import { useEffect } from 'react';
+
 import { NavLink } from 'react-router-dom';
 
 import { useTheme } from '@mui/material';
 
+import { useTopBar } from '@/hooks/useTopBar';
+
 const Error = () => {
   const theme = useTheme();
+
+  const { setTopBarTransparent } = useTopBar();
+
+  useEffect(() => {
+    setTopBarTransparent();
+  }, [])
 
   return (
     <div 
