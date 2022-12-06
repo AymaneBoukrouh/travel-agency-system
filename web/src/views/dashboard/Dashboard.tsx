@@ -7,15 +7,18 @@ import { useTopBar } from '@/hooks/useTopBar';
 import DashboardSideBar from '@/components/DashboardSideBar';
 
 const Dashboard = () => {
+  const dashboardColor = '#403294';
+
+
   const { setTopBarBackgroundColor } = useTopBar();
 
   useEffect(() => {
-    setTopBarBackgroundColor('white');
+    setTopBarBackgroundColor(dashboardColor);
   }, [])
 
   return (
     <div className="container-fluid d-flex h-100 p-0 bg-light">
-      <DashboardSideBar />
+      <DashboardSideBar backgroundColor={dashboardColor} />
       <div className="flex-grow-1 p-4">
         <Outlet />
       </div>
