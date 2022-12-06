@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from rest_framework import mixins, generics
 
 
-class SavedTripListAndDelete(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
+class SavedTripList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
     queryset = SavedTrip.objects.all()
     serializer_class = SavedTripSerializer
 
@@ -13,10 +13,7 @@ class SavedTripListAndDelete(mixins.ListModelMixin, mixins.CreateModelMixin, mix
 
     def post(self, request):
         return self.create(request)
-
-    def delete(self, request, pk):
-        return self.destroy(request, pk)
-
+  
     def perform_create(self, serializer):
         trip = Trip.objects.get(id=self.request.data['trip_id'])
         user = User.objects.get(id=self.request.data['user_id'])
@@ -24,3 +21,12 @@ class SavedTripListAndDelete(mixins.ListModelMixin, mixins.CreateModelMixin, mix
         # check if the user has already saved the trip
         if not SavedTrip.objects.filter(trip=trip, user=user).exists():
             serializer.save(trip=trip, user=user)
+
+
+class SavedTripDetail(mixins.DestroyModelMixin, generics.GenericAPIView):
+    queryset = SavedTrip.objects.all()
+    serializer_class = SavedTripSerializer
+
+    def delete(self, request, pk):
+        return self.destroy(request, pk)
+
