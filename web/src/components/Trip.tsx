@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import { AirplaneFill, TrainFrontFill, BusFrontFill, SuitHeart, SuitHeartFill, Building } from 'react-bootstrap-icons';
 
 import { Button, Checkbox } from '@mui/material';
@@ -39,7 +41,9 @@ const Trip = (trip: TripProps) => {
            {trip.places} places ({trip.left} left)
           </div>
           <div className="d-flex justify-content-center">
-            <Button variant="contained" className="bg-light text-dark mt-3">Details</Button> 
+            <NavLink to={`/trips/${trip.id}`} className="text-decoration-none mt-3" >
+              <Button variant="contained" className="bg-light text-dark">Details</Button>
+            </NavLink>
           </div>
         </div>
       </div>

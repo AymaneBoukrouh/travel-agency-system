@@ -4,6 +4,7 @@ import App from '@/App';
 import Error from '@/views/Error';
 import HelloWorld from '@/views/HelloWorld';
 import Trips from '@/views/Trips';
+import Trip from '@/views/Trip';
 
 import Auth from '@/views/Auth';
 import RegisterForm from '@/forms/RegisterForm';
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: 'trips',
         element: <Trips />
+      },
+      {
+        path: 'trips/:id',
+        element: <Trip />
       },
       {
         path: 'dashboard',

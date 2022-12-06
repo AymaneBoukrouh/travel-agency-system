@@ -1,0 +1,13 @@
+.trip-imgs .img-fluid {
+  transform: scale(1);
+  transition: transform .3s ease-in;
+}
+
+.trip-imgs .img-fluid:hover {
+  transform: scale(1.1);
+  transition: transform .3s ease-in;
+}
+
+.pointer-finger {
+  cursor: pointer;
+}
