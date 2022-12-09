@@ -14,15 +14,15 @@ const Auth = () => {
   const { setTopBarBackgroundColor } = useTopBar();
 
   useEffect(() => {
-    setTopBarBackgroundColor(theme.palette.primary.dark);
+    setTopBarBackgroundColor('#000');
   }, [])
 
   return (
-    <div style={{ backgroundColor: theme.palette.primary.main }}>
-      <div className="position-relative" style={{ height: '40vh' }}>
+    <div style={{ backgroundColor: 'white' }}>
+      <div className="position-relative" style={{ height: '50vh' }}>
         <div 
           className="position-absolute top-0 start-0 bg-dark w-100 h-50" 
-          style={{ backgroundImage: "url('/404-bg.jpg')", objectFit: 'cover' }}
+          style={{ backgroundImage: "url('/trips-bg.jpg')", backgroundPosition: 'right', backgroundSize: 'cover' }}
         >
         </div>
         <div className="position-relative position-absolute top-50 start-50 translate-middle rounded-3 bg-light w-50 h-75 p-5">
