@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useTheme, Button, TextField, InputLabel, InputAdornment } from '@mui/material';
 
@@ -10,6 +10,17 @@ import Trips from '@/components/Trips';
 
 const Auth = () => {
   const theme = useTheme();
+
+  const [people, setPeople] = useState(1);
+
+  const handleAddPeople = () => {
+    setPeople(people+1);
+  };
+
+  const handleRemovePeople = () => {
+    if (people>1)
+      setPeople(people-1);
+  };
 
   const { setTopBarBackgroundColor } = useTopBar();
 
@@ -62,9 +73,14 @@ const Auth = () => {
           </div>
           <div className="d-flex justify-content-center align-items-center bg-white p-3 mb-3">
             <Person className="text-dark me-4" />
-            <RemoveCircleOutline style={{ color: 'rgba(0, 0, 0, .2)' }} />
-            <span className="mx-3">1</span>
-            <AddCircleOutline color="primary" />
+            <button className="btn p-0 m-0" onClick={handleRemovePeople}>
+              <RemoveCircleOutline 
+                style={ (people > 1) ? {} : { color: 'rgba(0, 0, 0, .2)' }} 
+                color='primary'
+              />
+            </button>
+            <span className="mx-3">{ people }</span>
+            <button className="btn p-0 m-0" onClick={handleAddPeople}><AddCircleOutline color="primary" /></button>
           </div>
           <div className="position-absolute top-100 start-50 translate-middle w-50">
             <Button className="text-light w-100 p-3" variant="contained" style={{ backgroundColor: theme.palette.primary.light }}>Search</Button>
