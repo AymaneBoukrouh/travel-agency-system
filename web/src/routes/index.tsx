@@ -10,12 +10,9 @@ import Auth from '@/views/Auth';
 import RegisterForm from '@/forms/RegisterForm';
 import LoginForm from '@/forms/LoginForm';
 
+
 import Dashboard from '@/views/dashboard/Dashboard';
-import DashboardMain from '@/views/dashboard/Main';
-import DashboardUsers from '@/views/dashboard/Users';
-import DashboardTrips from '@/views/dashboard/Trips';
-import DashboardNewTrip from '@/views/dashboard/NewTrip';
-import DashboardSettings from '@/views/dashboard/Settings';
+import dashboardRoutes from '@/routes/dashboard';
 
 const router = createBrowserRouter([
   {
@@ -38,33 +35,7 @@ const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <Dashboard />,
-        children: [
-          {
-            path: '',
-            element: <DashboardMain />
-          },
-          {
-            path: 'users',
-            element: <DashboardUsers />
-          },
-          {
-            path: 'trips',
-            children: [
-              {
-                path: '',
-                element: <DashboardTrips />
-              },
-              {
-                path: 'new',
-                element: <DashboardNewTrip />
-              }
-            ]
-          },
-          {
-            path: 'settings',
-            element: <DashboardSettings />
-          }
-        ]
+        children: dashboardRoutes
       },
       {
         element: <Auth />,
