@@ -54,7 +54,7 @@ const Trips = (props: TripsProps) => {
 
   return (
     <div className="container-fluid" style={{ color: 'white' }}>
-      <div className="h3 mb-3">{props.title}</div>
+      <div className="text-dark h3 mb-3">{props.title}</div>
       <div className="row g-3">
       {trips.map((trip) => (
         <div className="col-3" key={trip.id}>

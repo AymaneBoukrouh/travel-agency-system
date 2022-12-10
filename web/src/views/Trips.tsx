@@ -14,18 +14,18 @@ const Auth = () => {
   const { setTopBarBackgroundColor } = useTopBar();
 
   useEffect(() => {
-    setTopBarBackgroundColor('#000');
+    setTopBarBackgroundColor(theme.palette.primary.main);
   }, [])
 
   return (
-    <div style={{ backgroundColor: 'white' }}>
+    <div className="bg-light">
       <div className="position-relative" style={{ height: '50vh' }}>
         <div 
           className="position-absolute top-0 start-0 bg-dark w-100 h-50" 
           style={{ backgroundImage: "url('/trips-bg.jpg')", backgroundPosition: 'right', backgroundSize: 'cover' }}
         >
         </div>
-        <div className="position-relative position-absolute top-50 start-50 translate-middle rounded-3 bg-light w-50 h-75 p-5">
+        <div className="position-relative position-absolute top-50 start-50 translate-middle rounded-3 bg-light w-50 h-75 p-5 shadow">
           <div className="mb-3">
             <TextField
               className='bg-white w-100'
@@ -67,7 +67,7 @@ const Auth = () => {
             <AddCircleOutline color="primary" />
           </div>
           <div className="position-absolute top-100 start-50 translate-middle w-50">
-            <Button className="bg-white text-dark w-100 p-3" variant="contained">Search</Button>
+            <Button className="text-light w-100 p-3" variant="contained" style={{ backgroundColor: theme.palette.primary.light }}>Search</Button>
           </div>
         </div>
       </div>

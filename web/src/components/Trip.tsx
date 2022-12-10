@@ -47,7 +47,7 @@ const Trip = (trip: TripProps) => {
           </div>
         </div>
       </div>
-      <div className="d-flex justify-content-between px-2">
+      <div className="d-flex justify-content-between text-dark px-2">
         <div className="d-flex mb-2">
           <div className="me-2">
             <AirplaneFill className="rotate-45" />
