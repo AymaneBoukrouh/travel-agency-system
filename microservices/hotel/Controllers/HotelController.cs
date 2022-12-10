@@ -4,42 +4,93 @@ using hotel.Models;
 namespace hotel.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/api/hotels")]
 public class HotelController : ControllerBase
 {
     private readonly ILogger<HotelController> _logger;
+    private readonly ApplicationDbContext _context;
 
-    public HotelController(ILogger<HotelController> logger)
+    public HotelController(ILogger<HotelController> logger, ApplicationDbContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
-    [HttpGet(Name = "GetHotel")]
+    [HttpGet(Name = "GetHotels")]
     public IEnumerable<Hotel> Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new Hotel
+        return _context.Hotels;
+    }
+
+    [HttpGet("{id}", Name = "GetHotel")]
+    public IActionResult Get(int id)
+    {
+        var hotel = _context.Hotels.Where(h => h.Id == id).FirstOrDefault();
+
+        if (hotel == null)
         {
-            Name = "Hotel",
-            City = "City"
-        })
-        .ToArray();
+            return NotFound();
+        }
+
+        return Ok(hotel);
     }
 
     [HttpPost(Name = "CreateHotel")]
     public IActionResult Create([FromBody] Hotel hotel)
     {
-        return CreatedAtRoute("GetHotel", new { id = 1 }, hotel);
+        // create hotel
+        Hotel newHotel = new Hotel
+        {
+            Name = hotel.Name,
+            City = hotel.City
+        };
+
+        // add hotel to database
+        _context.Hotels.Add(newHotel);
+        _context.SaveChanges();
+
+        // return hotel
+        return CreatedAtRoute("GetHotel", new { id = newHotel.Id }, newHotel);
     }
 
-    [HttpPut(Name = "UpdateHotel")]
-    public IActionResult Update([FromBody] Hotel hotel)
+    [HttpPut("{id}", Name = "UpdateHotel")]
+    public IActionResult Update(int id, [FromBody] Hotel hotel)
     {
-        return Ok(hotel);
+        // get hotel from database
+        var hotelToUpdate = _context.Hotels.Where(h => h.Id == id).FirstOrDefault();
+
+        if (hotelToUpdate == null)
+        {
+            return NotFound();
+        }
+
+        // update hotel
+        hotelToUpdate.Name = hotel.Name;
+        hotelToUpdate.City = hotel.City;
+
+        // save changes
+        _context.SaveChanges();
+
+        // return hotel
+        return CreatedAtRoute("GetHotel", new { id = hotelToUpdate.Id }, hotelToUpdate);
     }
 
     [HttpDelete("{id}", Name = "DeleteHotel")]
     public IActionResult Delete(int id)
     {
-        return NoContent();
+        // get hotel from database
+        var hotelToDelete = _context.Hotels.Where(h => h.Id == id).FirstOrDefault();
+
+        if (hotelToDelete == null)
+        {
+            return NotFound();
+        }
+
+        // delete hotel
+        _context.Hotels.Remove(hotelToDelete);
+        _context.SaveChanges();
+
+        // return hotel
+        return Ok(hotelToDelete);
     }
 }
