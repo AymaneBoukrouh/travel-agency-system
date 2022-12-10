@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import { useTheme, Button } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 
@@ -7,9 +9,11 @@ const Trips = () => {
   return (
     <div className="container-fluid bg-white p-5 rounded-3">
       <div className="d-flex justify-content-center">
-        <Button variant="contained" style={{ backgroundColor: theme.palette.primary.light }}>
-          Create Trip
-        </Button>
+        <NavLink to="/dashboard/trips/new" className="text-decoration-none">
+          <Button variant="contained" style={{ backgroundColor: theme.palette.primary.light }}>
+            Create Trip
+          </Button>
+        </NavLink>
       </div>
       <h3 className="mb-4">Trips</h3>
       <table className="table table-striped">
