@@ -13,6 +13,7 @@ import LoginForm from '@/forms/LoginForm';
 import Dashboard from '@/views/dashboard/Dashboard';
 import DashboardMain from '@/views/dashboard/Main';
 import DashboardUsers from '@/views/dashboard/Users';
+import DashboardTrips from '@/views/dashboard/Trips';
 import DashboardSettings from '@/views/dashboard/Settings';
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
           {
             path: 'users',
             element: <DashboardUsers />
+          },
+          {
+            path: 'trips',
+            element: <DashboardTrips />
           },
           {
             path: 'settings',
