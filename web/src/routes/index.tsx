@@ -14,6 +14,7 @@ import Dashboard from '@/views/dashboard/Dashboard';
 import DashboardMain from '@/views/dashboard/Main';
 import DashboardUsers from '@/views/dashboard/Users';
 import DashboardTrips from '@/views/dashboard/Trips';
+import DashboardNewTrip from '@/views/dashboard/NewTrip';
 import DashboardSettings from '@/views/dashboard/Settings';
 
 const router = createBrowserRouter([
@@ -48,7 +49,16 @@ const router = createBrowserRouter([
           },
           {
             path: 'trips',
-            element: <DashboardTrips />
+            children: [
+              {
+                path: '',
+                element: <DashboardTrips />
+              },
+              {
+                path: 'new',
+                element: <DashboardNewTrip />
+              }
+            ]
           },
           {
             path: 'settings',
