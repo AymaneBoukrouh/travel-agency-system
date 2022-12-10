@@ -7,6 +7,10 @@ import DashboardSettings from '@/views/dashboard/Settings';
 const dashboardRoutes = [
   {
     path: '',
+    to: 'main'    
+  },
+  {
+    path: 'main',
     element: <DashboardMain />
   },
   {

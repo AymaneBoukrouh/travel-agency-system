@@ -11,7 +11,7 @@ const SideBar = (props: SideBarProps) => {
   return (
     <div className="m-3" style={{ backgroundColor: props.backgroundColor, borderRadius: '20px' }}>
       <div className="d-flex flex-column gap-3 py-5">
-        <DashboardNavLink to="/dashboard" Icon={Dashboard} bg={props.backgroundColor} />
+        <DashboardNavLink to="/dashboard/main" Icon={Dashboard} bg={props.backgroundColor} />
         <DashboardNavLink to="/dashboard/users" Icon={People} bg={props.backgroundColor} />
         <DashboardNavLink to="/dashboard/trips" Icon={Tour} bg={props.backgroundColor} />
         <DashboardNavLink to="/dashboard/settings" Icon={Settings} bg={props.backgroundColor} />
