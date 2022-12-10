@@ -50,7 +50,7 @@ const TopBar = () => {
               </div>
               <div className="p-3">
                   <NavLink
-                    to = "/dashboard"
+                    to = "/dashboard/main"
                     className = "nav-link"
                     style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}
                   >
