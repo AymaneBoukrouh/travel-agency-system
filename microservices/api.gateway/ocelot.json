@@ -25,7 +25,7 @@
         }
       ],
       "DownstreamPathTemplate": "/api/hotels/{hotelId}"
-    }
+    },
     {
       "UpstreamPathTemplate": "/api/users",
       "UpstreamHttpMethod": [ "Get", "Post" ],
