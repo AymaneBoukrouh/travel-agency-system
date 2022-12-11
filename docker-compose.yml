@@ -29,7 +29,6 @@ services:
     ports:
     - 3306:3306
 
-  hotel:
-    build: ./microservices/hotel
+  hotel_microservice:
+    build: ./microservices/hotel.service
     container_name: hotel_microservice
-  
