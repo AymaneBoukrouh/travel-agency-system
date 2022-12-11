@@ -2,7 +2,7 @@
   "Routes": [
     {
       "UpstreamPathTemplate": "/api/hotels",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamHttpMethod": [ "Get", "Post" ],
 
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -13,6 +13,19 @@
       ],
       "DownstreamPathTemplate": "/api/hotels"
     },
+    {
+      "UpstreamPathTemplate": "/api/hotels/{hotelId}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5004
+        }
+      ],
+      "DownstreamPathTemplate": "/api/hotels/{hotelId}"
+    }
     {
       "UpstreamPathTemplate": "/api/users",
       "UpstreamHttpMethod": [ "Get", "Post" ],
