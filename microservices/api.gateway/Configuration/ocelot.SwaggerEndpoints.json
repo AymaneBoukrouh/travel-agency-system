@@ -1,0 +1,24 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "hotel",
+      "Config": [
+        {
+          "Name": "Hotel API",
+          "Version": "v1",
+          "Url": "http://hotel_microservice/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "user",
+      "Config": [
+        {
+          "Name": "User API",
+          "Version": "v1",
+          "Url": "http://user_microservice/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}

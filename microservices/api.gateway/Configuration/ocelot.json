@@ -11,7 +11,8 @@
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/hotels"
+      "DownstreamPathTemplate": "/api/hotels",
+      "SwaggerKey": "hotel"
     },
     {
       "UpstreamPathTemplate": "/api/hotels/{hotelId}",
@@ -37,7 +38,8 @@
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/users"
+      "DownstreamPathTemplate": "/api/users",
+      "SwaggerKey": "user"
     },
     {
       "UpstreamPathTemplate": "/api/users/{userId}",
