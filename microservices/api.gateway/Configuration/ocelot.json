@@ -1,8 +1,8 @@
 {
   "Routes": [
     {
-      "UpstreamPathTemplate": "/api/hotels",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamPathTemplate": "/api/hotels/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
 
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -11,25 +11,12 @@
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/hotels",
+      "DownstreamPathTemplate": "/api/hotels/{everything}",
       "SwaggerKey": "hotel"
     },
     {
-      "UpstreamPathTemplate": "/api/hotels/{hotelId}",
-      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
-
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "hotel_microservice",
-          "Port": 80
-        }
-      ],
-      "DownstreamPathTemplate": "/api/hotels/{hotelId}"
-    },
-    {
-      "UpstreamPathTemplate": "/api/users",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamPathTemplate": "/api/users/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
 
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -38,21 +25,8 @@
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/users",
+      "DownstreamPathTemplate": "/api/users/{everything}",
       "SwaggerKey": "user"
-    },
-    {
-      "UpstreamPathTemplate": "/api/users/{userId}",
-      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ],
-
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "user_microservice",
-          "Port": 80
-        }
-      ],
-      "DownstreamPathTemplate": "/api/users/{userId}"
     }
   ],
   "GlobalConfiguration": {
