@@ -7,8 +7,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5004
+          "Host": "hotel_microservice",
+          "Port": 80
         }
       ],
       "DownstreamPathTemplate": "/api/hotels"
@@ -20,8 +20,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5004
+          "Host": "hotel_microservice",
+          "Port": 80
         }
       ],
       "DownstreamPathTemplate": "/api/hotels/{hotelId}"
@@ -33,8 +33,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5131
+          "Host": "user_microservice",
+          "Port": 80
         }
       ],
       "DownstreamPathTemplate": "/api/users"
@@ -46,8 +46,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5131
+          "Host": "user_microservice",
+          "Port": 80
         }
       ],
       "DownstreamPathTemplate": "/api/users/{userId}"
