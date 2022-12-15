@@ -17,6 +17,12 @@ services:
     depends_on:
       - db
 
+  hotel_microservice_test:
+    build: ./microservices/hotel.service/Tests
+    container_name: hotel_microservice_test
+    depends_on:
+      - hotel_microservice
+
   db:
     environment:
       MYSQL_ROOT_PASSWORD: root
