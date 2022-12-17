@@ -1,32 +1,35 @@
 # /bin/env python
 
 import typer
+import subprocess
+from typing import Optional
 
 
-app = typer.Typer(add_completion=False)
+app = typer.Typer(no_args_is_help=True, add_completion=False)
 
 
 @app.command()
-def run():
-    '''
-    run containers
-    '''
-    pass
+def run(
+    containers: list[str] = typer.Argument(None, metavar='[CONTAINER...]', hidden=True),
+    detach: bool = typer.Option(False, '--detach', '-d', help='detached mode: run in background')
+):
+    command = ['sh', 'scripts/run.sh']
+
+    if detach:
+        command.append('-d')
+    if containers:
+        command.extend(containers)
+    
+    subprocess.run(command)
 
 
 @app.command()
 def stop():
-    '''
-    stop containers
-    '''
     pass
 
 
 @app.command()
 def test():
-    '''
-    run tests
-    '''
     pass
 
 
