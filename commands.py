@@ -30,7 +30,7 @@ def stop():
 
 @app.command()
 def test():
-    pass
+    subprocess.run(['sh', 'scripts/test.sh'])
 
 
 if __name__ == '__main__':
