@@ -25,5 +25,5 @@ jobs:
         
     - name: Run Tests
       run: |
-        chmod +x ./api/test.sh
-        ./api/test.sh
+        chmod +x scripts/*.sh
+        python commands.py 
