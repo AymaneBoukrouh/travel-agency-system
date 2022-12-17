@@ -7,6 +7,8 @@ services:
       DB_HOST: 'db'
       DB_PORT: 3306
       SECRET_KEY: ${SECRET_KEY}
+    ports:
+    - 8000:80
     volumes:
     - ./api:/app
 
@@ -22,6 +24,8 @@ services:
       MYSQL_PASSWORD: ${DB_PASS}
     volumes:
     - ./db:/var/lib/mysql
+    ports:
+    - 3306:3306
 
 volumes:
   db:

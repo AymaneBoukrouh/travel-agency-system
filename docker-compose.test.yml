@@ -1,5 +1,6 @@
 services:
   api:
+    container_name: test_travel_agency_system_api
     command:
     - /bin/sh
     - -c
@@ -24,6 +25,7 @@ services:
       - hotel_microservice
 
   db:
+    container_name: test_travel_agency_system_db
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: travel_agency_system
