@@ -28,4 +28,4 @@ jobs:
     - name: Run Tests
       run: |
         chmod +x scripts/*.sh
-        python commands.py 
+        ./scripts/test.sh
