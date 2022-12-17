@@ -28,9 +28,19 @@ def run(
 
 
 @app.command()
-def stop():
-    pass
+def stop(
+    containers: list[str] = typer.Argument(None, metavar='[CONTAINER...]', hidden=True)
+):
+    command = ['docker', 'compose']
 
+    if containers:
+        command.append('stop')
+        command.extend(containers)
+    else:
+        command.append('down')
+
+    subprocess.run(command)
+    
 
 @app.command()
 def test():
