@@ -2,9 +2,13 @@
 
 import typer
 import subprocess
+import signal
 from typing import Optional
 
+# ignore interrupt signal
+signal.signal(signal.SIGINT, lambda signum, frame: None)
 
+# app
 app = typer.Typer(no_args_is_help=True, add_completion=False)
 
 
