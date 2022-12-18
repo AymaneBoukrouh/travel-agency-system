@@ -40,10 +40,46 @@ const Offices = () => {
       const data = await response.json();
       setOffices([...offices, data]);
       handleCloseAddOfficeModal();
+      setAddOfficeModalError('');
     }
 
     else {
       setAddOfficeModalError('Office already exists.');
+    }
+  };
+
+  // delete modal
+  const [showDeleteOfficeModal, setShowDeleteOfficeModal] = useState(false);
+  const [deleteOfficeModalError, setDeleteOfficeModalError] = useState('');
+  const [officeToDeleteID, setOfficeToDeleteID] = useState(-1);
+  const [officeToDeleteCity, setOfficeToDeleteCity] = useState('');
+
+  const handleOpenDeleteOfficeModal = (id: number) => {
+    setOfficeToDeleteID(id);
+    setOfficeToDeleteCity(offices.find(office => office.id === id).city);
+    setShowDeleteOfficeModal(true);
+  };
+
+  const handleCloseDeleteOfficeModal = () => setShowDeleteOfficeModal(false);
+  
+  const handleDeleteOffice = async () => {
+    if (officeToDeleteID === -1) {
+      setDeleteOfficeModalError('An error occurred.');
+      return;
+    }
+
+    const response = await fetch(`http://localhost:8000/api/offices/${officeToDeleteID}`, {
+      method: 'DELETE'
+    });
+
+    if (response.ok) {
+      setOffices(offices.filter(office => office.id !== officeToDeleteID));
+      handleCloseDeleteOfficeModal();
+      setDeleteOfficeModalError('');
+    }
+
+    else {
+      setDeleteOfficeModalError('An error occurred.');
     }
   };
 
@@ -148,7 +184,7 @@ const Offices = () => {
               <td>{office.city}</td>
               <td>
                 <button className="btn text-primary"><Edit /></button>
-                <button className="btn text-danger"><Delete /></button>
+                <button onClick={() => handleOpenDeleteOfficeModal(office.id)} className="btn text-danger"><Delete /></button>
               </td>
             </tr>
           ))}
@@ -156,6 +192,23 @@ const Offices = () => {
         }
         {!offices && <tbody></tbody>}
       </table>
+      <Modal show={showDeleteOfficeModal} onHide={handleCloseDeleteOfficeModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Office</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Are you sure you want to delete the office located in "{ officeToDeleteCity }"?</p>
+          {deleteOfficeModalError && (
+            <div className="alert alert-danger" role="alert">
+              {deleteOfficeModalError}
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="contained" color="error" className="me-2" onClick={handleDeleteOffice}>Delete</Button>
+          <Button variant="outlined" color="primary" onClick={handleCloseDeleteOfficeModal}>Cancel</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }
