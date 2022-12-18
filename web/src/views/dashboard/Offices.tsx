@@ -138,8 +138,9 @@ const Offices = () => {
       <table className="table table-striped" id="offices-tabl">
         <thead>
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">#</th>
             <th scope="col">City</th>
+            <th scope="col">Zip Code</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -147,8 +148,9 @@ const Offices = () => {
         <tbody>
           {offices.map((office) => (
             <tr key={office.id}>
-              <th scope="row">#{office.id}</th>
+              <th scope="row">{office.id}</th>
               <td>{office.city}</td>
+              <td>{office.zipcode}</td>
               <td>
                 <button className="btn text-primary"><Edit /></button>
                 <button onClick={() => handleOpenDeleteOfficeModal(office.id)} className="btn text-danger"><Delete /></button>
