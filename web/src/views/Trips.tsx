@@ -8,6 +8,7 @@ import { useTopBar } from '@/hooks/useTopBar';
 
 import Trips from '@/components/Trips';
 
+
 const TripsView = () => {
   const theme = useTheme();
 
