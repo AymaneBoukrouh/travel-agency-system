@@ -14,14 +14,14 @@ const Offices = () => {
   const [offices, setOffices] = useState([]);
 
   // modal
-  const [showModal, setShowModal] = useState(false);
-  const [modalError, setModalError] = useState('');
-  const handleOpen = () => setShowModal(true);
-  const handleClose = () => setShowModal(false);
+  const [showAddOfficeModal, setShowAddOfficeModal] = useState(false);
+  const [addOfficeModalError, setAddOfficeModalError] = useState('');
+  const handleOpenAddOfficeModal = () => setShowAddOfficeModal(true);
+  const handleCloseAddOfficeModal = () => setShowAddOfficeModal(false);
 
   const handleAddOffice = async () => {
     if (!$('#new-office-city').val() || !$('#new-office-zipcode').val()) {
-      setModalError('Please fill out all fields.');
+      setAddOfficeModalError('Please fill out all fields.');
       return;
     }
 
@@ -39,11 +39,11 @@ const Offices = () => {
     if (response.ok) {
       const data = await response.json();
       setOffices([...offices, data]);
-      handleClose();
+      handleCloseAddOfficeModal();
     }
 
     else {
-      setModalError('Office already exists.');
+      setAddOfficeModalError('Office already exists.');
     }
   };
 
@@ -56,18 +56,18 @@ const Offices = () => {
   return (
     <div className="container-fluid bg-white p-5 rounded-3">
       <div className="d-flex justify-content-center">
-        <Button onClick={handleOpen} variant="contained" style={{ backgroundColor: theme.palette.primary.light }}>
+        <Button onClick={handleOpenAddOfficeModal} variant="contained" style={{ backgroundColor: theme.palette.primary.light }}>
           Add Office
         </Button>
-        <Modal show={showModal} onHide={handleClose}>
+        <Modal show={showAddOfficeModal} onHide={handleCloseAddOfficeModal}>
           <Modal.Header closeButton>
             <Modal.Title>Add Office</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <FormControl variant="standard" fullWidth>
-              {modalError && (
+              {addOfficeModalError && (
                 <div className="alert alert-danger" role="alert">
-                  {modalError}
+                  {addOfficeModalError}
                 </div>
               )}
               <div className="row mb-3 px-3">
@@ -127,7 +127,7 @@ const Offices = () => {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="contained" color="primary" className="me-2" onClick={handleAddOffice}>Add</Button>
-            <Button variant="outlined" color="error" onClick={handleClose}>Cancel</Button>
+            <Button variant="outlined" color="error" onClick={handleCloseAddOfficeModal}>Cancel</Button>
           </Modal.Footer>
         </Modal>
       </div>
