@@ -8,7 +8,7 @@ import { useTopBar } from '@/hooks/useTopBar';
 
 import Trips from '@/components/Trips';
 
-const Auth = () => {
+const Trips = () => {
   const theme = useTheme();
 
   const [people, setPeople] = useState(1);
