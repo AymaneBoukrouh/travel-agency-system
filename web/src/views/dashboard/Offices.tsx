@@ -135,23 +135,23 @@ const Offices = () => {
         </Modal>
       </div>
       <h3 className="mb-4">Offices</h3>
-      <table className="table table-striped" id="offices-tabl">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">City</th>
             <th scope="col">Zip Code</th>
-            <th scope="col">Actions</th>
+            <th scope="col" className="text-center" style={{ width: '200px' }}>Actions</th>
           </tr>
         </thead>
         {offices && 
         <tbody>
           {offices.map((office) => (
             <tr key={office.id}>
-              <th scope="row">{office.id}</th>
-              <td>{office.city}</td>
-              <td>{office.zipcode}</td>
-              <td>
+              <th className="align-middle" scope="row">{office.id}</th>
+              <td className="align-middle">{office.city}</td>
+              <td className="align-middle">{office.zipcode}</td>
+              <td className="text-center">
                 <button className="btn text-primary"><Edit /></button>
                 <button onClick={() => handleOpenDeleteOfficeModal(office.id)} className="btn text-danger"><Delete /></button>
               </td>
