@@ -127,39 +127,6 @@ const Offices = () => {
                 </div>
               </div>
             </FormControl>
-            {false && (
-            <div className="mb-3">
-              <span>Starting Material</span>
-              {false && (
-              <div>
-                <div className="mb-3">
-                  <label className="form-label">Diameter</label>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Length</label>
-                  <input type="text" className="form-control" />
-                </div>
-              </div>
-              )}
-              {false && (
-              <div>
-                <div className="mb-3">
-                  <label className="form-label">Thickness</label>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Width</label>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Length</label>
-                  <input type="text" className="form-control" />
-                </div>
-              </div>
-              )}
-            </div>
-            )}
           </Modal.Body>
           <Modal.Footer>
             <Button variant="contained" color="primary" className="me-2" onClick={handleAddOffice}>Add</Button>
