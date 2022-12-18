@@ -3,6 +3,7 @@ import DashboardUsers from '@/views/dashboard/Users';
 import DashboardOffices from '@/views/dashboard/Offices';
 import DashboardTrips from '@/views/dashboard/Trips';
 import DashboardNewTrip from '@/views/dashboard/NewTrip';
+import DashboardPackages from '@/views/dashboard/Packages';
 import DashboardSettings from '@/views/dashboard/Settings';
 
 const dashboardRoutes = [
@@ -34,6 +35,10 @@ const dashboardRoutes = [
         element: <DashboardNewTrip />
       }
     ]
+  },
+  {
+    path: 'packages',
+    element: <DashboardPackages />
   },
   {
     path: 'settings',
