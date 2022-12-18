@@ -8,7 +8,7 @@ import { useTopBar } from '@/hooks/useTopBar';
 
 import Trips from '@/components/Trips';
 
-const Trips = () => {
+const TripsView = () => {
   const theme = useTheme();
 
   const [people, setPeople] = useState(1);
@@ -99,4 +99,4 @@ const Trips = () => {
   )
 }
 
-export default Auth;
+export default TripsView;
