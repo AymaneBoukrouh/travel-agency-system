@@ -15,11 +15,36 @@ const Offices = () => {
 
   // modal
   const [showModal, setShowModal] = useState(false);
+  const [modalError, setModalError] = useState('');
   const handleOpen = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
-  const handleAddOffice = () => {
-    alert('Add Office');
+  const handleAddOffice = async () => {
+    if (!$('#new-office-city').val() || !$('#new-office-zipcode').val()) {
+      setModalError('Please fill out all fields.');
+      return;
+    }
+
+    const response = await fetch('http://localhost:8000/api/offices', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        city: $('#new-office-city').val(),
+        zipcode: $('#new-office-zipcode').val(),
+      })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      setOffices([...offices, data]);
+      handleClose();
+    }
+
+    else {
+      setModalError('Office already exists.');
+    }
   };
 
   useEffect(() => {
@@ -40,7 +65,12 @@ const Offices = () => {
           </Modal.Header>
           <Modal.Body>
             <FormControl variant="standard" fullWidth>
-              <div className="row mb-3 px-5">
+              {modalError && (
+                <div className="alert alert-danger" role="alert">
+                  {modalError}
+                </div>
+              )}
+              <div className="row mb-3 px-3">
                 <div className="col">
                   <TextField 
                     required 
@@ -48,6 +78,15 @@ const Offices = () => {
                     label="City" 
                     variant="standard" 
                     fullWidth 
+                  />
+                </div>
+                <div className="col">
+                  <TextField
+                    required
+                    id="new-office-zipcode"
+                    label="Zip Code"
+                    variant="standard"
+                    fullWidth
                   />
                 </div>
               </div>
