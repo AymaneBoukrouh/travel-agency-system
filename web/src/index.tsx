@@ -16,6 +16,10 @@ import 'bootstrap';
 // custom styles
 import './index.css';
 
+// datatables
+import 'datatables.net-dt/css/jquery.dataTables.css';
+import 'datatables.net-dt/js/dataTables.dataTables';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

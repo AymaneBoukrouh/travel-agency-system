@@ -1,10 +1,21 @@
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { useTheme, Button } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 
+import $ from 'jquery';
+
 const Offices = () => {
   const theme = useTheme();
+
+  useEffect(() => {
+    $('#offices-table').DataTable();
+    $('#offices-table_filter').hide();
+    $('#offices-table_paginate').hide();
+    $('#offices-table_length').hide();
+    $('#offices-table_info').hide();
+  }, []);
 
   return (
     <div className="container-fluid bg-white p-5 rounded-3">
@@ -16,7 +27,7 @@ const Offices = () => {
         </NavLink>
       </div>
       <h3 className="mb-4">Offices</h3>
-      <table className="table table-striped">
+      <table id="offices-table">
         <thead>
           <tr>
             <th scope="col">ID</th>
