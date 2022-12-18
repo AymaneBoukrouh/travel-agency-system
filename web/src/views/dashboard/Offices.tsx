@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { useTheme, Button } from '@mui/material';
@@ -9,12 +9,12 @@ import $ from 'jquery';
 const Offices = () => {
   const theme = useTheme();
 
+  const [offices, setOffices] = useState([]);
+
   useEffect(() => {
-    $('#offices-table').DataTable();
-    $('#offices-table_filter').hide();
-    $('#offices-table_paginate').hide();
-    $('#offices-table_length').hide();
-    $('#offices-table_info').hide();
+    fetch('http://localhost:8000/api/offices')
+      .then(response => response.json())
+      .then(data => setOffices(data))
   }, []);
 
   return (
@@ -27,7 +27,7 @@ const Offices = () => {
         </NavLink>
       </div>
       <h3 className="mb-4">Offices</h3>
-      <table id="offices-table">
+      <table className="table table-striped" id="offices-tabl">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -35,32 +35,21 @@ const Offices = () => {
             <th scope="col">Actions</th>
           </tr>
         </thead>
+        {offices && 
         <tbody>
-          <tr>
-            <th scope="row">#1</th>
-            <td>Tangier</td>
-            <td>
-              <button className="btn text-primary"><Edit /></button>
-              <button className="btn text-danger"><Delete /></button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">#2</th>
-            <td>Rabat</td>
-            <td>
-              <button className="btn text-primary"><Edit /></button>
-              <button className="btn text-danger"><Delete /></button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">#3</th>
-            <td>Casablanca</td>
-            <td>
-              <button className="btn text-primary"><Edit /></button>
-              <button className="btn text-danger"><Delete /></button>
-            </td>
-          </tr>
+          {offices.map((office) => (
+            <tr key={office.id}>
+              <th scope="row">#{office.id}</th>
+              <td>{office.city}</td>
+              <td>
+                <button className="btn text-primary"><Edit /></button>
+                <button className="btn text-danger"><Delete /></button>
+              </td>
+            </tr>
+          ))}
         </tbody>
+        }
+        {!offices && <tbody></tbody>}
       </table>
     </div>
   )
