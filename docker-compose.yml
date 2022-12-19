@@ -9,6 +9,7 @@ services:
     - |
       wait-for-it --service db:3306 --timeout=60
       python manage.py migrate
+      python manage.py collectstatic --noinput
       python manage.py runserver 0.0.0.0:80
     depends_on:
     - db
@@ -50,3 +51,14 @@ services:
     - ASPNETCORE_ENVIRONMENT=Development
     depends_on:
     - db
+
+  nginx:
+    image: nginx:latest
+    container_name: travel_agency_system_nginx
+    ports:
+    - 80:80
+    volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    - ./api/static:/home/static
+    depends_on:
+    - api
