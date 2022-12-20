@@ -1,5 +1,6 @@
 services:
   api:
+    image: ghcr.io/aymaneboukrouh/tas-api:latest
     command:
     - /bin/sh
     - -c
