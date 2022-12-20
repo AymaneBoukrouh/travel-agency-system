@@ -1,0 +1,9 @@
+# general
+Dockerfile
+.dockerignore
+.gitihnore
+README.md
+
+# react
+build
+node_modules
