@@ -8,9 +8,9 @@ import '@/App.css';
 
 function App() {
   // theme
-  const darkTheme = createTheme({
+  const lightTheme = createTheme({
     palette: {
-      mode: 'dark',
+      mode: 'light',
       primary: {
         main: '#403294',
         light: '#6e5ab5',
@@ -25,7 +25,7 @@ function App() {
   });
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={lightTheme}>
       <div className="d-flex flex-column h-100">
         <TopBar />
         <Outlet />

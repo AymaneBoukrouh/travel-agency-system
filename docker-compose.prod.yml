@@ -1,0 +1,29 @@
+services:
+  api:
+    command:
+    - /bin/sh
+    - -c
+    - |
+      wait-for-it --service db:3306 --timeout=60
+      python manage.py migrate
+      python manage.py collectstatic --noinput
+      gunicorn travelagencysystem.asgi:application -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+    volumes:
+    - /home/tas/api_static:/app/static
+
+  web:
+  
+  nginx:
+    image: nginx:latest
+    container_name: travel_agency_system_nginx
+    ports:
+    - 80:80
+    volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    - /home/tas/api_static:/home/static
+    depends_on:
+    - api
+    - web
+
+volumes:
+  api_static:

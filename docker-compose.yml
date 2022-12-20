@@ -3,27 +3,30 @@ services:
   api:
     build: ./api
     container_name: travel_agency_system_api
-    command:
-    - /bin/sh
-    - -c
-    - |
-      wait-for-it --service db:3306 --timeout=60
-      python manage.py migrate
-      python manage.py runserver 0.0.0.0:80
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: 'db'
+      DB_PORT: 3306
+      SECRET_KEY: ${SECRET_KEY}
     depends_on:
     - db
 
   web:
     build: ./web
     container_name: travel_agency_system_web
-    ports:
-    - 3000:3000
     depends_on:
     - api
 
   db:
     image: mariadb:latest
     container_name: travel_agency_system_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
 
   api_gateway:
     build: ./microservices/api.gateway

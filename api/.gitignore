@@ -1,5 +1,6 @@
 # python
 venv/
+static/
 __pycache__/
 .pytest_cache/
 Pipfile*
