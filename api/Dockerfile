@@ -12,6 +12,3 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # copy source code
 COPY . .
-
-# run development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
