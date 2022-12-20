@@ -1,0 +1,33 @@
+name: Deploy to DigitalOcean
+
+on:
+  workflows_run:
+    workflows: ["Build and Push to GitHub Container Registry"]
+    branches: [main]
+    types:
+      - completed
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH
+        uses: MrSquaare/ssh-setup-action@v2
+        with:
+          host: travel-agency-system.live
+          private-key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+        
+      - name: Log In to GitHub Container Registry on DigitalOcean
+        run: ssh travel-agency-system.live 'echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin'
+      
+      - name: Pull API Image from GitHub Container Registry
+        run: ssh travel-agency-system.live 'docker pull ghcr.io/aymaneboukrouh/tas-api:latest'
+      
+      - name: Pull Web Image from GitHub Container Registry
+        run: ssh travel-agency-system.live 'docker pull ghcr.io/aymaneboukrouh/tas-web:latest'
+      
+      - name: Copy docker-compose to DigitalOcean
+        run: scp docker-compose.yml travel-agency-system.live:/home/tas/docker-compose.yml
+
+      - name: Run docker-compose on DigitalOcean
+        run: ssh travel-agency-system.live 'docker compose -f /home/tas/docker-compose.yml up -d'
