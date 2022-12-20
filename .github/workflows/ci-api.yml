@@ -3,15 +3,15 @@ name: Run API Tests
 on:
   push:
     branches:
-      - main
       - dev
     paths:
       - 'api/**'
 
   pull_request:
     branches:
-      - main
       - dev
+    paths:
+      - 'api/**'
 
 jobs:
   build:
