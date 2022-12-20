@@ -1,5 +1,13 @@
 services:
   api:
+    command:
+    - /bin/sh
+    - -c
+    - |
+      wait-for-it --service db:3306 --timeout=60
+      python manage.py migrate
+      python manage.py collectstatic --noinput
+      python manage.py runserver 0.0.0.0:80
     ports:
     - 8000:80
     volumes:

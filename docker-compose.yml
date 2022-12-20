@@ -3,14 +3,6 @@ services:
   api:
     build: ./api
     container_name: travel_agency_system_api
-    command:
-    - /bin/sh
-    - -c
-    - |
-      wait-for-it --service db:3306 --timeout=60
-      python manage.py migrate
-      python manage.py collectstatic --noinput
-      python manage.py runserver 0.0.0.0:80
     environment:
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
