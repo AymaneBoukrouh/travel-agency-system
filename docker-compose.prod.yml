@@ -1,0 +1,30 @@
+services:
+  api:
+    command:
+    - /bin/sh
+    - -c
+    - |
+      python manage.py migrate
+      python manage.py collectstatic --noinput
+      python manage.py runserver 0.0.0.0:80
+
+  web:
+    command:
+    - /bin/sh
+    - -c
+    - |
+      npm run build
+      npm install -g serve
+      serve -s build -l 3000 -n
+  
+  nginx:
+    image: nginx:latest
+    container_name: travel_agency_system_nginx
+    ports:
+    - 80:80
+    volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    - ./api/static:/home/static
+    depends_on:
+    - api
+    - web

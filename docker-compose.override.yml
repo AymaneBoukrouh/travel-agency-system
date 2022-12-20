@@ -1,27 +1,17 @@
 services:
   api:
-    environment:
-      DB_USER: ${DB_USER}
-      DB_PASS: ${DB_PASS}
-      DB_NAME: ${DB_NAME}
-      DB_HOST: 'db'
-      DB_PORT: 3306
-      SECRET_KEY: ${SECRET_KEY}
     ports:
     - 8000:80
     volumes:
     - ./api:/app
 
   web:
+    ports:
+    - 3000:3000
     volumes:
     - ./web:/app
 
   db:
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASS}
     volumes:
     - ./db:/var/lib/mysql
     ports:
