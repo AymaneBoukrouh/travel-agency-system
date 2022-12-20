@@ -13,11 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
     
-    - name: Build Image
-      run: docker build --file api/Dockerfile --tag ghcr.io/aymaneboukrouh/tas-api:latest
+      - name: Build Image
+        run: docker build --file api/Dockerfile --tag ghcr.io/aymaneboukrouh/tas-api:latest
 
-    - name: Log In to GitHub Container Registry
-      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Log In to GitHub Container Registry
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-    - name: Push Image to GitHub Container Registry
-      run: docker push ghcr.io/aymaneboukrouh/tas-api:latest
+      - name: Push Image to GitHub Container Registry
+        run: docker push ghcr.io/aymaneboukrouh/tas-api:latest
