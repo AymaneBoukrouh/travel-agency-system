@@ -26,8 +26,10 @@ jobs:
       - name: Pull Web Image from GitHub Container Registry
         run: ssh travel-agency-system.live 'docker pull ghcr.io/aymaneboukrouh/tas-web:latest'
       
-      - name: Copy docker-compose to DigitalOcean
-        run: scp docker-compose.yml travel-agency-system.live:/home/tas/docker-compose.yml
+      - name: Copy docker-compose files to DigitalOcean
+        run: |
+          scp docker-compose.yml travel-agency-system.live:/home/tas/docker-compose.yml
+          scp docker-compose.prod.yml travel-agency-system.live:/home/tas/docker-compose.prod.yml
 
       - name: Run docker-compose on DigitalOcean
-        run: ssh travel-agency-system.live 'docker compose -f /home/tas/docker-compose.yml up -d'
+        run: ssh travel-agency-system.live 'docker compose -f /home/tas/docker-compose.yml -f /home/tas/docker-compose.prod.yml up -d'
