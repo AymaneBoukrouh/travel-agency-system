@@ -13,6 +13,7 @@ services:
     - /home/tas/api_static:/app/static
 
   web:
+    image: ghcr.io/aymaneboukrouh/tas-web:latest
   
   nginx:
     image: nginx:latest
