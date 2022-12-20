@@ -28,8 +28,8 @@ jobs:
       
       - name: Copy docker-compose files to DigitalOcean
         run: |
-          scp docker-compose.yml travel-agency-system.live:/home/tas/docker-compose.yml
-          scp docker-compose.prod.yml travel-agency-system.live:/home/tas/docker-compose.prod.yml
+          scp docker-compose.yml root@travel-agency-system.live:/home/tas/docker-compose.yml
+          scp docker-compose.prod.yml root@travel-agency-system.live:/home/tas/docker-compose.prod.yml
 
       - name: Run docker-compose on DigitalOcean
         run: ssh root@travel-agency-system.live 'docker compose -f /home/tas/docker-compose.yml -f /home/tas/docker-compose.prod.yml up -d'
