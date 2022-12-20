@@ -12,13 +12,6 @@ services:
     - /home/tas/api_static:/app/static
 
   web:
-    command:
-    - /bin/sh
-    - -c
-    - |
-      npm run build
-      npm install -g serve
-      serve -s build -l 3000 -n
   
   nginx:
     image: nginx:latest
