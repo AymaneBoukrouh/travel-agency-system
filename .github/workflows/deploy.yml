@@ -18,13 +18,13 @@ jobs:
           private-key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         
       - name: Log In to GitHub Container Registry on DigitalOcean
-        run: ssh travel-agency-system.live 'echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin'
+        run: ssh root@travel-agency-system.live 'echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin'
       
       - name: Pull API Image from GitHub Container Registry
-        run: ssh travel-agency-system.live 'docker pull ghcr.io/aymaneboukrouh/tas-api:latest'
+        run: ssh root@travel-agency-system.live 'docker pull ghcr.io/aymaneboukrouh/tas-api:latest'
       
       - name: Pull Web Image from GitHub Container Registry
-        run: ssh travel-agency-system.live 'docker pull ghcr.io/aymaneboukrouh/tas-web:latest'
+        run: ssh root@travel-agency-system.live 'docker pull ghcr.io/aymaneboukrouh/tas-web:latest'
       
       - name: Copy docker-compose files to DigitalOcean
         run: |
@@ -32,4 +32,4 @@ jobs:
           scp docker-compose.prod.yml travel-agency-system.live:/home/tas/docker-compose.prod.yml
 
       - name: Run docker-compose on DigitalOcean
-        run: ssh travel-agency-system.live 'docker compose -f /home/tas/docker-compose.yml -f /home/tas/docker-compose.prod.yml up -d'
+        run: ssh root@travel-agency-system.live 'docker compose -f /home/tas/docker-compose.yml -f /home/tas/docker-compose.prod.yml up -d'
