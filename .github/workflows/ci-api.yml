@@ -6,12 +6,14 @@ on:
       - dev
     paths:
       - 'api/**'
+      - '.github/workflows/ci-api.yml'
 
   pull_request:
     branches:
       - dev
     paths:
       - 'api/**'
+      - '.github/workflows/ci-api.yml'
 
 jobs:
   build:
