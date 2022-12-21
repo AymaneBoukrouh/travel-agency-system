@@ -21,7 +21,7 @@ services:
     ports:
     - 80:80
     volumes:
-    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    - /home/tas/nginx.conf:/etc/nginx/nginx.conf
     - /home/tas/api_static:/home/static
     depends_on:
     - api

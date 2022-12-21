@@ -30,6 +30,9 @@ jobs:
         run: |
           scp docker-compose.yml root@travel-agency-system.live:/home/tas/docker-compose.yml
           scp docker-compose.prod.yml root@travel-agency-system.live:/home/tas/docker-compose.prod.yml
+      
+      - name: Copy nginx config file to DigitalOcean
+        run: scp nginx/nginx.conf root@travel-agency-system.live:/home/tas/nginx.conf
 
       - name: Run docker-compose on DigitalOcean
         run: ssh root@travel-agency-system.live 'docker compose -f /home/tas/docker-compose.yml -f /home/tas/docker-compose.prod.yml up -d'

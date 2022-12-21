@@ -27,29 +27,3 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASS}
-
-  api_gateway:
-    build: ./microservices/api.gateway
-    container_name: api_gateway
-    environment:
-    - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-    - 5000:80
-    depends_on:
-    - db
-
-  user_microservice:
-    build: ./microservices/user.service
-    container_name: user_microservice
-    environment:
-    - ASPNETCORE_ENVIRONMENT=Development
-    depends_on:
-    - db
-
-  hotel_microservice:
-    build: ./microservices/hotel.service
-    container_name: hotel_microservice
-    environment:
-    - ASPNETCORE_ENVIRONMENT=Development
-    depends_on:
-    - db
