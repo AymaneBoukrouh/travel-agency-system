@@ -7,3 +7,4 @@ class TripClick(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     trip = models.ForeignKey('Trip', on_delete=models.CASCADE)
+    datetime = models.DateTimeField(auto_now_add=True)
