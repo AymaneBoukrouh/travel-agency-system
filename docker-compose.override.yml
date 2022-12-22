@@ -40,5 +40,31 @@ services:
     depends_on:
     - db
 
+  #api_gateway:
+  #  build: ./microservices/api.gateway
+  #  container_name: api_gateway
+  #  environment:
+  #  - ASPNETCORE_ENVIRONMENT=Development
+  #  depends_on:
+  #  - db
+  #  - user_microservice
+  #  - hotel_microservice
+
+  #user_microservice:
+  #  build: ./microservices/user.service
+  #  container_name: user_microservice
+  #  environment:
+  #  - ASPNETCORE_ENVIRONMENT=Development
+  #  depends_on:
+  #  - db
+
+  #hotel_microservice:
+  #  build: ./microservices/hotel.service
+  #  container_name: hotel_microservice
+  #  environment:
+  #  - ASPNETCORE_ENVIRONMENT=Development
+  #  depends_on:
+  #  - db
+
 volumes:
   db:

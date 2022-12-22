@@ -18,11 +18,11 @@ services:
     depends_on:
       - db
 
-  hotel_microservice_test:
-    build: ./microservices/hotel.service/Tests
-    container_name: hotel_microservice_test
-    depends_on:
-      - hotel_microservice
+  #hotel_microservice_test:
+  #  build: ./microservices/hotel.service/Tests
+  #  container_name: hotel_microservice_test
+  #  depends_on:
+  #    - hotel_microservice
 
   db:
     container_name: test_travel_agency_system_db
