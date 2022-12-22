@@ -22,8 +22,31 @@ services:
   db:
     image: mariadb:latest
     container_name: travel_agency_system_db
+
+  api_gateway:
+    build: ./microservices/api.gateway
+    container_name: api_gateway
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASS}
+    - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+    - db
+    - user_microservice
+    - hotel_microservice
+
+  user_microservice:
+    build: ./microservices/user.service
+    container_name: user_microservice
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+    - db
+
+  hotel_microservice:
+    build: ./microservices/hotel.service
+    container_name: hotel_microservice
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+    - db
+
+
