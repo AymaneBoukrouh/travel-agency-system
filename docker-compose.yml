@@ -14,7 +14,8 @@ services:
     - db
 
   web:
-    build: ./web
+    build:
+      context: ./web
     container_name: travel_agency_system_web
     depends_on:
     - api
