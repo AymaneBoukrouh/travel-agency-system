@@ -14,6 +14,13 @@ services:
 
   web:
     image: ghcr.io/aymaneboukrouh/tas-web:latest
+
+  db:
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
   
   nginx:
     image: nginx:latest
