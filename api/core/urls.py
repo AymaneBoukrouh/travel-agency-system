@@ -17,5 +17,6 @@ urlpatterns = [
     path('trips', views.TripList.as_view()),
     path('trips/<int:pk>', views.TripDetail.as_view()),
     path('saved_trips', views.SavedTripList.as_view()),
-    path('saved_trips/<int:pk>', views.SavedTripDetail.as_view())
+    path('saved_trips/<int:pk>', views.SavedTripDetail.as_view()),
+    path('trip_clicks', views.TripClickList.as_view(), name='trip-click-list'),
 ]
