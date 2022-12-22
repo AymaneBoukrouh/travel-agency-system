@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 
 import { useTheme, Button, FormControl, TextField } from '@mui/material';
+import { Table, TableCell, TableBody, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 
 import $ from 'jquery';
@@ -135,32 +136,34 @@ const Offices = () => {
         </Modal>
       </div>
       <h3 className="mb-4">Offices</h3>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">City</th>
-            <th scope="col">Zip Code</th>
-            <th scope="col" className="text-center" style={{ width: '200px' }}>Actions</th>
-          </tr>
-        </thead>
-        {offices && 
-        <tbody>
-          {offices.map((office) => (
-            <tr key={office.id}>
-              <th className="align-middle" scope="row">{office.id}</th>
-              <td className="align-middle">{office.city}</td>
-              <td className="align-middle">{office.zipcode}</td>
-              <td className="text-center">
-                <button className="btn text-primary"><Edit /></button>
-                <button onClick={() => handleOpenDeleteOfficeModal(office.id)} className="btn text-danger"><Delete /></button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-        }
-        {!offices && <tbody></tbody>}
-      </table>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell scope="col">#</TableCell>
+              <TableCell scope="col">City</TableCell>
+              <TableCell scope="col">Zip Code</TableCell>
+              <TableCell scope="col" className="text-center" style={{ width: '200px' }}>Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          {offices && 
+          <TableBody>
+            {offices.map((office) => (
+              <TableRow key={office.id}>
+                <TableCell className="align-middle fw-bold" scope="row">{office.id}</TableCell>
+                <TableCell className="align-middle">{office.city}</TableCell>
+                <TableCell className="align-middle">{office.zipcode}</TableCell>
+                <TableCell className="text-center">
+                  <button className="btn text-primary"><Edit /></button>
+                  <button onClick={() => handleOpenDeleteOfficeModal(office.id)} className="btn text-danger"><Delete /></button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          }
+          {!offices && <tbody></tbody>}
+        </Table>
+      </TableContainer>
       <Modal show={showDeleteOfficeModal} onHide={handleCloseDeleteOfficeModal}>
         <Modal.Header closeButton>
           <Modal.Title>Delete Office</Modal.Title>
