@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { useTheme, AppBar, Toolbar, Typography } from '@mui/material';
+import { AccountCircle } from '@mui/icons-material';
 
 import { useTopBarContext } from '@/hooks/useTopBarContext';
 
@@ -78,9 +79,47 @@ const TopBar = () => {
                   </NavLink>
               </div>
             </div>}
-            {user && <div>
+            {/*user && <div>
               <div className="p-3">
                 <button className="btn nav-link" onClick={logout}>Logout</button>
+              </div>
+            </div>*/}
+            {user && <div className="d-flex align-items-center">
+              <div className="dropdown" data-bs-toggle="dropdown" id="user-menu-dropdown" aria-expanded="false">
+                <button className="btn text-light">
+                  <AccountCircle style={{ fontSize: '30px' }} />
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="user-menu-dropdown">
+                  <li>
+                    <NavLink
+                      to = '/hello_world'
+                      className = "dropdown-item"
+                    >
+                      {t('Account')}
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to = 'hello_world'
+                      className = "dropdown-item"
+                    >
+                      {t('My Trips')}
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to = 'hello_world'
+                      className = "dropdown-item"
+                    >
+                      {t('Language')}
+                    </NavLink>
+                  </li>
+                  <li>
+                    <button className="dropdown-item text-danger" onClick={logout}>
+                      {t('Logout')}
+                    </button>
+                  </li>
+                </ul>
               </div>
             </div>}
           </div>
