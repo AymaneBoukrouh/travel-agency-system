@@ -27,7 +27,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['travel-agency-system.live']
+ALLOWED_HOSTS = ['127.0.0.1', 'travel-agency-system.live', 'www.travel-agency-system.live']
 
 
 # Application definition
