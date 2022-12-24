@@ -16,9 +16,9 @@ const DashboardTable = (props: DashboardTableProps) => {
         <TableHead>
           <TableRow>
             {props.column_names.map((column_name) => (
-              <TableCell key={column_name} scope="col">{column_name}</TableCell>
+              <TableCell key={column_name} className="fw-bold" scope="col">{column_name}</TableCell>
             ))}
-            <TableCell scope="col" className="text-center" style={{ width: '200px' }}>Actions</TableCell>
+            <TableCell scope="col" className="text-center fw-bold" style={{ width: '200px' }}>Actions</TableCell>
           </TableRow>
         </TableHead>
         {props.data && 
@@ -26,7 +26,7 @@ const DashboardTable = (props: DashboardTableProps) => {
           {props.data.map((item) => (
             <TableRow key={item.id}>
               {props.columns.map((column) => (
-                <TableCell key={`${column}-${item.id}`} className="align-middle">{item[column]}</TableCell>
+                <TableCell key={`${column}-${item.id}`} className={`${ column==='id' ? 'fw-bold ' : '' }align-middle`}>{item[column]}</TableCell>
               ))}
               <TableCell className="text-center">
                 <button className="btn text-primary"><Edit /></button>
