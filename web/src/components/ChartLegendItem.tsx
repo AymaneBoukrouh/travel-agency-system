@@ -12,7 +12,7 @@ const ChartLegendItem = ({ name, value, color, novalue=false }: ChartLegendItemP
         <div className="rounded-circle" style={{ width: '20px', height: '20px', backgroundColor: color }}></div>
         <div className="ms-2">{name}</div>
       </div>
-      {!novalue && <div className="fw-bold">${value}</div>}
+      {!novalue && <div className={`${value >= 0 ? 'text-success' : 'text-danger' } fw-bold`}>{value > 0 ? `+$${value}` : `-$${-value}`}</div>}
     </div>
   )
 }

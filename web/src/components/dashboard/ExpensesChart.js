@@ -57,10 +57,10 @@ const ExpensesChart = () => {
           <h2>Revenues/Expenses</h2>
           <div className="d-flex flex-column gap-2 mb-3">
             <h4>Services</h4>
-            <ChartLegendItem className="flex-grow-1" name="AWS" value="194" color="rgb(255, 99, 132)" />
-            <ChartLegendItem className="flex-grow-1" name="Google Maps" value="233" color="rgb(255, 159, 64)" />
-            <ChartLegendItem /*  */className="flex-grow-1" name="Hotel API" value="93" color="rgb(255, 205, 86)" />
-            <ChartLegendItem className="flex-grow-1" name="Car Rental API" value="52" color="rgb(75, 192, 192)" />
+            <ChartLegendItem className="flex-grow-1" name="AWS" value="-194" color="rgb(255, 99, 132)" />
+            <ChartLegendItem className="flex-grow-1" name="Google Maps" value="-233" color="rgb(255, 159, 64)" />
+            <ChartLegendItem /*  */className="flex-grow-1" name="Hotel API" value="-93" color="rgb(255, 205, 86)" />
+            <ChartLegendItem className="flex-grow-1" name="Car Rental API" value="-52" color="rgb(75, 192, 192)" />
           </div>
           <div className="d-flex flex-column gap-2 mb-3">  
             <h4>Trips</h4>
