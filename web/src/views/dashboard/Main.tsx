@@ -29,7 +29,7 @@ const Main = () => {
         <div className="col-2">
           <DashboardStatCard value={3} name="Offices" comment="in total" Icon={Apartment} iconColor="blue" />
         </div>
-        <div className="col-12 col-md-6 col-lg-3">
+        <div className="col-12 col-md-6 col-lg-6">
           <Card className="p-3 bg-white text-dark" elevation={0}>
             <DashboardExpenses />
           </Card>
@@ -39,7 +39,17 @@ const Main = () => {
             <DashboardVisits />
           </Card>
         </div>
-        <div className="col-12 col-md-6 col-lg-3">
+        <div className="col-12 col-md-6 col-lg-4">
+          <Card className="p-3 bg-white text-dark h-100" elevation={0}>
+            <DashboardTopSavedTrips />
+          </Card>
+        </div>
+        <div className="col-12 col-md-6 col-lg-4">
+          <Card className="p-3 bg-white text-dark h-100" elevation={0}>
+            <DashboardTopSavedTrips />
+          </Card>
+        </div>
+        <div className="col-12 col-md-6 col-lg-4">
           <Card className="p-3 bg-white text-dark h-100" elevation={0}>
             <DashboardTopSavedTrips />
           </Card>
