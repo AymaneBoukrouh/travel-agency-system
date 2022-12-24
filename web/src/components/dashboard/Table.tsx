@@ -29,7 +29,7 @@ const DashboardTable = (props: DashboardTableProps) => {
                 <TableCell key={`${column}-${item.id}`} className={`${ column==='id' ? 'fw-bold ' : '' }align-middle`}>{item[column]}</TableCell>
               ))}
               <TableCell className="text-center">
-                <button className="btn text-primary"><Edit /></button>
+                <button onClick={() => props.handlers.editModalHandler(item.id)} className="btn text-primary me-2"><Edit /></button>
                 <button onClick={() => props.handlers.deleteModalHandler(item.id)} className="btn text-danger"><Delete /></button>
               </TableCell>
             </TableRow>

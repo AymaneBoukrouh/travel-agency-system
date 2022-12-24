@@ -9,16 +9,37 @@ import DashboardTable from '@/components/dashboard/Table';
 
 import $ from 'jquery';
 
+
+interface Office {
+  id: number;
+  city: string;
+  zipcode: number;
+};
+
+
 const Offices = () => {
   const theme = useTheme();
 
   const [offices, setOffices] = useState([]);
 
   // modal
-  const [showAddOfficeModal, setShowAddOfficeModal] = useState(false);
-  const [addOfficeModalError, setAddOfficeModalError] = useState('');
-  const handleOpenAddOfficeModal = () => setShowAddOfficeModal(true);
-  const handleCloseAddOfficeModal = () => setShowAddOfficeModal(false);
+  const [addModal, setAddModal] = useState(true); // true = add, false = edit
+  const [showOfficeModal, setShowOfficeModal] = useState(false);
+  const [officeModalError, setOfficeModalError] = useState('');
+  const [officeToEdit, setOfficeToEdit] = useState<Office | null>(null);
+
+  const handleOpenAddOfficeModal = () => {
+    setAddModal(true);
+    setShowOfficeModal(true);
+  }
+
+  const handleOpenEditOfficeModal = (id: number) => {
+    setAddModal(false);
+    setOfficeToEdit(offices.find(office => office.id === id));
+    setShowOfficeModal(true);
+  };
+  
+  const handleCloseOfficeModal = () => setShowOfficeModal(false);
 
   const handleAddOffice = async () => {
     if (!$('#new-office-city').val() || !$('#new-office-zipcode').val()) {
@@ -40,12 +61,41 @@ const Offices = () => {
     if (response.ok) {
       const data = await response.json();
       setOffices([...offices, data]);
-      handleCloseAddOfficeModal();
+      handleCloseOfficeModal();
       setAddOfficeModalError('');
     }
 
     else {
       setAddOfficeModalError('Office already exists.');
+    }
+  };
+
+  const handleEditOffice = async () => {
+    if (!$('#new-office-city').val() || !$('#new-office-zipcode').val()) {
+      setAddOfficeModalError('Please fill out all fields.');
+      return;
+    }
+
+    const response = await fetch(`http://localhost:8000/api/offices/${officeToEdit.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        city: $('#new-office-city').val(),
+        zipcode: $('#new-office-zipcode').val(),
+      })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      setOffices(offices.map(office => office.id === data.id ? data : office));
+      handleCloseOfficeModal();
+      setAddOfficeModalError('');
+    }
+
+    else {
+      setAddOfficeModalError('An error occured.');
     }
   };
 
@@ -96,15 +146,15 @@ const Offices = () => {
         <Button onClick={handleOpenAddOfficeModal} variant="contained" style={{ backgroundColor: theme.palette.primary.light }}>
           Add Office
         </Button>
-        <Modal show={showAddOfficeModal} onHide={handleCloseAddOfficeModal}>
+        <Modal show={showOfficeModal} onHide={handleCloseOfficeModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Add Office</Modal.Title>
+            <Modal.Title>{addModal ? 'Add Office' : 'Edit Office'}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <FormControl variant="standard" fullWidth>
-              {addOfficeModalError && (
+              {officeModalError && (
                 <div className="alert alert-danger" role="alert">
-                  {addOfficeModalError}
+                  {officeModalError}
                 </div>
               )}
               <div className="row mb-3 px-3">
@@ -115,6 +165,7 @@ const Offices = () => {
                     label="City" 
                     variant="standard" 
                     fullWidth 
+                    defaultValue = {officeToEdit ? officeToEdit.city : ''}
                   />
                 </div>
                 <div className="col">
@@ -124,14 +175,20 @@ const Offices = () => {
                     label="Zip Code"
                     variant="standard"
                     fullWidth
+                    defaultValue = {officeToEdit ? officeToEdit.zipcode : ''}
                   />
                 </div>
               </div>
             </FormControl>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="contained" color="primary" className="me-2" onClick={handleAddOffice}>Add</Button>
-            <Button variant="outlined" color="error" onClick={handleCloseAddOfficeModal}>Cancel</Button>
+            {addModal && (
+              <Button variant="contained" color="primary" className="me-2" onClick={handleAddOffice}>Add</Button>
+            )}
+            {!addModal && (
+              <Button variant="contained" color="primary" className="me-2" onClick={handleEditOffice}>Save</Button>
+            )}
+            <Button variant="outlined" color="error" onClick={handleCloseOfficeModal}>Cancel</Button>
           </Modal.Footer>
         </Modal>
       </div>
@@ -140,7 +197,10 @@ const Offices = () => {
         columns = {['id', 'city', 'zipcode']}
         column_names = {['#', 'City', 'Zip Code']}
         data = {offices}
-        handlers = {{ deleteModalHandler: handleOpenDeleteOfficeModal }}
+        handlers = {{
+          editModalHandler: handleOpenEditOfficeModal,
+          deleteModalHandler: handleOpenDeleteOfficeModal 
+        }}
       />
       <Modal show={showDeleteOfficeModal} onHide={handleCloseDeleteOfficeModal}>
         <Modal.Header closeButton>
