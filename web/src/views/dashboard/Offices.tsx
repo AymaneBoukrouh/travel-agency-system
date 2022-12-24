@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 
 import { useTheme, Button, FormControl, TextField } from '@mui/material';
-import { Table, TableCell, TableBody, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import { Edit, Delete } from '@mui/icons-material';
+
+import DashboardTable from '@/components/dashboard/Table';
 
 import $ from 'jquery';
 
@@ -136,34 +136,12 @@ const Offices = () => {
         </Modal>
       </div>
       <h3 className="mb-4">Offices</h3>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell scope="col">#</TableCell>
-              <TableCell scope="col">City</TableCell>
-              <TableCell scope="col">Zip Code</TableCell>
-              <TableCell scope="col" className="text-center" style={{ width: '200px' }}>Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          {offices && 
-          <TableBody>
-            {offices.map((office) => (
-              <TableRow key={office.id}>
-                <TableCell className="align-middle fw-bold" scope="row">{office.id}</TableCell>
-                <TableCell className="align-middle">{office.city}</TableCell>
-                <TableCell className="align-middle">{office.zipcode}</TableCell>
-                <TableCell className="text-center">
-                  <button className="btn text-primary"><Edit /></button>
-                  <button onClick={() => handleOpenDeleteOfficeModal(office.id)} className="btn text-danger"><Delete /></button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-          }
-          {!offices && <tbody></tbody>}
-        </Table>
-      </TableContainer>
+      <DashboardTable 
+        columns = {['id', 'city', 'zipcode']}
+        column_names = {['#', 'City', 'Zip Code']}
+        data = {offices}
+        handlers = {{ deleteModalHandler: handleOpenDeleteOfficeModal }}
+      />
       <Modal show={showDeleteOfficeModal} onHide={handleCloseDeleteOfficeModal}>
         <Modal.Header closeButton>
           <Modal.Title>Delete Office</Modal.Title>
