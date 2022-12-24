@@ -6,6 +6,9 @@ import HelloWorld from '@/views/HelloWorld';
 import Trips from '@/views/Trips';
 import Trip from '@/views/Trip';
 
+import Account from '@/views/Account';
+import MyTrips from '@/views/MyTrips';
+
 import Auth from '@/views/Auth';
 import RegisterForm from '@/forms/RegisterForm';
 import LoginForm from '@/forms/LoginForm';
@@ -31,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: 'trips/:id',
         element: <Trip />
+      },
+      {
+        path: 'account',
+        element: <Account />
+      },
+      {
+        path: 'mytrips',
+        element: <MyTrips />
       },
       {
         path: 'dashboard',

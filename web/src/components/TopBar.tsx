@@ -79,11 +79,6 @@ const TopBar = () => {
                   </NavLink>
               </div>
             </div>}
-            {/*user && <div>
-              <div className="p-3">
-                <button className="btn nav-link" onClick={logout}>Logout</button>
-              </div>
-            </div>*/}
             {user && <div className="d-flex align-items-center">
               <div className="dropdown" data-bs-toggle="dropdown" id="user-menu-dropdown" aria-expanded="false">
                 <button className="btn text-light">
@@ -92,7 +87,7 @@ const TopBar = () => {
                 <ul className="dropdown-menu" aria-labelledby="user-menu-dropdown">
                   <li>
                     <NavLink
-                      to = '/hello_world'
+                      to = "/account"
                       className = "dropdown-item"
                     >
                       {t('Account')}
@@ -100,7 +95,7 @@ const TopBar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to = 'hello_world'
+                      to = "/mytrips"
                       className = "dropdown-item"
                     >
                       {t('My Trips')}
