@@ -19,54 +19,59 @@ const Offices = () => {
   // office handlers
   const checkOfficeDetails = () => { // check that all fields are filled out
     if (!officeDetails.city || !officeDetails.zipcode) {
-      setAddOfficeModalError('Please fill out all fields.');
+      setOfficeModalError('Please fill out all fields.');
       return false;
     }
   }
 
   const handleCreateOffice = async () => {
     checkOfficeDetails(); // check that all fields are filled out
-
-    const newOffice = await createOffice({
-      city: officeDetails.city,
-      zipcode: officeDetails.zipcode,
-    });
+    const newOffice = await createOffice(officeDetails);
 
     if (newOffice) {
       setOffices([...offices, newOffice]);
       handleCloseOfficeModal();
-      setAddOfficeModalError('');
+      setOfficeModalError(null);
     }
 
     else {
-      setAddOfficeModalError('Office already exists.');
+      setOfficeModalError('Office already exists.');
     }
   }
 
   const handleUpdateOffice = async () => {
-    if (!officeDetails.city || !officeDetails.zipcode) {
-      setAddOfficeModalError('Please fill out all fields.');
-      return;
-    }
+    checkOfficeDetails(); // check that all fields are filled out
+    const updatedOffice = await updateOffice(officeDetails);
 
-    const response = await updateOffice(officeDetails);
-
-    if (response) {
+    if (updatedOffice) {
       setOffices(offices.map(office => office.id === officeDetails.id ? officeDetails : office));
       handleCloseOfficeModal();
-      setAddOfficeModalError('');
+      setOfficeModalError(null);
     }
 
     else {
-      setAddOfficeModalError('An error occured.');
+      setOfficeModalError('An error occured.');
     }
   };
 
+  const handleDeleteOffice = async () => {
+    const deletedOffice = await deleteOffice(officeDetails.id);
+
+    if (deletedOffice) {
+      setOffices(offices.filter(office => office.id !== officeDetails.id ));
+      handleCloseDeleteOfficeModal();
+      setDeleteOfficeModalError(null);
+    }
+
+    else {
+      setDeleteOfficeModalError('An error occurred.');
+    }
+  };
 
   // add/edit modal
-  const [isAddModal, setIsAddModal] = useState(true); // true = add, false = edit
+  const [isAddModal, setIsAddModal] = useState<boolean>(true); // true = add, false = edit
   const [showOfficeModal, setShowOfficeModal] = useState<boolean>(false);
-  const [officeModalError, setOfficeModalError] = useState<string>('');
+  const [officeModalError, setOfficeModalError] = useState<string | null>(null);
 
   const handleOpenAddOfficeModal = () => {
     setOfficeDetails({} as Office);
@@ -82,47 +87,22 @@ const Offices = () => {
 
   const handleCloseOfficeModal = () => setShowOfficeModal(false);
 
+  // delete modal
+  const [showDeleteOfficeModal, setShowDeleteOfficeModal] = useState<boolean>(false);
+  const [deleteOfficeModalError, setDeleteOfficeModalError] = useState<string | null>(null);
+
+  const handleOpenDeleteOfficeModal = (id: number) => {
+    setOfficeDetails(offices.find(office => office.id === id));
+    setShowDeleteOfficeModal(true);
+  };
+
+  const handleCloseDeleteOfficeModal = () => setShowDeleteOfficeModal(false);
+
   // get offices
   useEffect(() => {
     getOffices().then((data) => setOffices(data));
   }, []);
 
-
-  // *** to refactor ***
-  // delete modal
-  const [showDeleteOfficeModal, setShowDeleteOfficeModal] = useState(false);
-  const [deleteOfficeModalError, setDeleteOfficeModalError] = useState('');
-  const [officeToDeleteID, setOfficeToDeleteID] = useState(-1);
-  const [officeToDeleteCity, setOfficeToDeleteCity] = useState('');
-
-  const handleOpenDeleteOfficeModal = (id: number) => {
-    setOfficeToDeleteID(id);
-    setOfficeToDeleteCity(offices.find(office => office.id === id).city);
-    setShowDeleteOfficeModal(true);
-  };
-
-  const handleCloseDeleteOfficeModal = () => setShowDeleteOfficeModal(false);
-  
-  const handleDeleteOffice = async () => {
-    if (officeToDeleteID === -1) {
-      setDeleteOfficeModalError('An error occurred.');
-      return;
-    }
-
-    const response = await fetch(`http://localhost:8000/api/offices/${officeToDeleteID}`, {
-      method: 'DELETE'
-    });
-
-    if (response.ok) {
-      setOffices(offices.filter(office => office.id !== officeToDeleteID));
-      handleCloseDeleteOfficeModal();
-      setDeleteOfficeModalError('');
-    }
-
-    else {
-      setDeleteOfficeModalError('An error occurred.');
-    }
-  };
 
   return (
     <div className="container-fluid bg-white p-5 rounded-3">
@@ -193,7 +173,7 @@ const Offices = () => {
           <Modal.Title>Delete Office</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Are you sure you want to delete the office located in "{ officeToDeleteCity }"?</p>
+          <p>Are you sure you want to delete the office located in "{ officeDetails.city }"?</p>
           {deleteOfficeModalError && (
             <div className="alert alert-danger" role="alert">
               {deleteOfficeModalError}

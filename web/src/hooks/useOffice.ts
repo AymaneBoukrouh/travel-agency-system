@@ -79,12 +79,12 @@ export const useOffice = () => {
       method: 'DELETE',
     });
 
-    const data = await response.json();
-
     if (!response.ok) {
-      setError(data.message);
-      return;
+      setError('An error occured.');
+      return false;
     }
+
+    return true;
   }
 
   return { getOffices, getOffice, createOffice, updateOffice, deleteOffice, error };
