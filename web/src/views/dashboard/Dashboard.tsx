@@ -9,7 +9,7 @@ import { useTopBar } from '@/hooks/useTopBar';
 import DashboardSideBar from '@/components/dashboard/SideBar';
 
 const Dashboard = () => {
-  const { isAdmin } = useAuthContext();
+  const { user } = useAuthContext();
   const navigate = useNavigate();
 
   const dashboardColor = '#403294';
@@ -20,7 +20,8 @@ const Dashboard = () => {
     setTopBarBackgroundColor(dashboardColor);
   }, [])
 
-  if (!isAdmin) {
+  //if (user && !user.isAdmin) { # TODO: a bit slow, fix later
+  if (localStorage.getItem('isAdmin') === 'false') {
     navigate('/trips');
     return null;
   }
