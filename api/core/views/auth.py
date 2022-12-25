@@ -41,5 +41,6 @@ def current_user(request):
         'id': user.id,
         'firstname': user.first_name,
         'lastname': user.last_name,
-        'email': user.email
+        'email': user.email,
+        'is_admin': user.is_superuser
     })
