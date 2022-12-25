@@ -21,8 +21,9 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
     if (accessToken) {
-      dispatch({ type: 'LOGIN', payload: { accessToken, refreshToken } });
+      dispatch({ type: 'LOGIN', payload: { accessToken, refreshToken, isAdmin } });
     }
   }, []);
 

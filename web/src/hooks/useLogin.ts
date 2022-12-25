@@ -39,9 +39,21 @@ export const useLogin = () => {
       return;
     }
 
-    setIsLoading(false);
     localStorage.setItem('accessToken', data.access);
     localStorage.setItem('refreshToken', data.refresh);
+
+    // check if admin
+    const adminResponse = await fetch('http://localhost:8000/api/current_user', {
+      headers: {
+        Authorization: `Bearer ${data.access}`
+      }
+    });
+
+    const adminData = await adminResponse.json();
+    localStorage.setItem('isAdmin', adminData.is_admin.toString());
+    
+
+    setIsLoading(false);
     const payload = { accessToken: data.access, refreshToken: data.refresh };
     dispatch({ type: 'LOGIN', payload });
   }

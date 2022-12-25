@@ -14,6 +14,8 @@ const TopBar = () => {
   const theme = useTheme();
   const { t } = useTranslation();
 
+  const { isAdmin } = useAuthContext();
+
   const { user } = useAuthContext();
   const { logout } = useLogout();
 
@@ -49,6 +51,7 @@ const TopBar = () => {
                     {t('Trips')}
                   </NavLink>
               </div>
+              {isAdmin && (
               <div className="p-3">
                   <NavLink
                     to = "/dashboard/main"
@@ -58,6 +61,7 @@ const TopBar = () => {
                     {t('Dashboard')}
                   </NavLink>
               </div>
+              )}
             </div>
             {!user && <div className="d-flex">
               <div className="p-3">
