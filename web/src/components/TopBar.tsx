@@ -14,7 +14,8 @@ const TopBar = () => {
   const theme = useTheme();
   const { t } = useTranslation();
 
-  const { isAdmin } = useAuthContext();
+  //const { isAdmin } = useAuthContext(); # TODO: a bit slow, fix later
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
   const { user } = useAuthContext();
   const { logout } = useLogout();
