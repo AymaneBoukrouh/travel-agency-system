@@ -1,66 +1,39 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
 import { Modal } from 'react-bootstrap';
-
 import { useTheme, Button, FormControl, TextField } from '@mui/material';
 
 import DashboardTable from '@/components/dashboard/Table';
-
-import $ from 'jquery';
-
-
-interface Office {
-  id: number;
-  city: string;
-  zipcode: number;
-};
+import { Office } from '@/types/Office';
+import { useOffice } from '@/hooks/useOffice';
 
 
 const Offices = () => {
   const theme = useTheme();
 
-  const [offices, setOffices] = useState([]);
+  // office
+  const [offices, setOffices] = useState<Office[]>([]);
+  const [officeDetails, setOfficeDetails] = useState<Office>({} as Office);
+  const { getOffices, getOffice, createOffice, updateOffice, deleteOffice, error } = useOffice();
 
-  // modal
-  const [addModal, setAddModal] = useState(true); // true = add, false = edit
-  const [showOfficeModal, setShowOfficeModal] = useState(false);
-  const [officeModalError, setOfficeModalError] = useState('');
-  const [officeToEdit, setOfficeToEdit] = useState<Office | null>(null);
-
-  const handleOpenAddOfficeModal = () => {
-    setAddModal(true);
-    setShowOfficeModal(true);
+  // office handlers
+  const checkOfficeDetails = () => { // check that all fields are filled out
+    if (!officeDetails.city || !officeDetails.zipcode) {
+      setAddOfficeModalError('Please fill out all fields.');
+      return false;
+    }
   }
 
-  const handleOpenEditOfficeModal = (id: number) => {
-    setAddModal(false);
-    setOfficeToEdit(offices.find(office => office.id === id));
-    setShowOfficeModal(true);
-  };
-  
-  const handleCloseOfficeModal = () => setShowOfficeModal(false);
+  const handleCreateOffice = async () => {
+    checkOfficeDetails(); // check that all fields are filled out
 
-  const handleAddOffice = async () => {
-    if (!$('#new-office-city').val() || !$('#new-office-zipcode').val()) {
-      setAddOfficeModalError('Please fill out all fields.');
-      return;
-    }
-
-    const response = await fetch('http://localhost:8000/api/offices', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        city: $('#new-office-city').val(),
-        zipcode: $('#new-office-zipcode').val(),
-      })
+    const newOffice = await createOffice({
+      city: officeDetails.city,
+      zipcode: officeDetails.zipcode,
     });
 
-    if (response.ok) {
-      const data = await response.json();
-      setOffices([...offices, data]);
+    if (newOffice) {
+      setOffices([...offices, newOffice]);
       handleCloseOfficeModal();
       setAddOfficeModalError('');
     }
@@ -68,28 +41,18 @@ const Offices = () => {
     else {
       setAddOfficeModalError('Office already exists.');
     }
-  };
+  }
 
-  const handleEditOffice = async () => {
-    if (!$('#new-office-city').val() || !$('#new-office-zipcode').val()) {
+  const handleUpdateOffice = async () => {
+    if (!officeDetails.city || !officeDetails.zipcode) {
       setAddOfficeModalError('Please fill out all fields.');
       return;
     }
 
-    const response = await fetch(`http://localhost:8000/api/offices/${officeToEdit.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        city: $('#new-office-city').val(),
-        zipcode: $('#new-office-zipcode').val(),
-      })
-    });
+    const response = await updateOffice(officeDetails);
 
-    if (response.ok) {
-      const data = await response.json();
-      setOffices(offices.map(office => office.id === data.id ? data : office));
+    if (response) {
+      setOffices(offices.map(office => office.id === officeDetails.id ? officeDetails : office));
       handleCloseOfficeModal();
       setAddOfficeModalError('');
     }
@@ -99,6 +62,33 @@ const Offices = () => {
     }
   };
 
+
+  // add/edit modal
+  const [isAddModal, setIsAddModal] = useState(true); // true = add, false = edit
+  const [showOfficeModal, setShowOfficeModal] = useState<boolean>(false);
+  const [officeModalError, setOfficeModalError] = useState<string>('');
+
+  const handleOpenAddOfficeModal = () => {
+    setOfficeDetails({} as Office);
+    setIsAddModal(true);
+    setShowOfficeModal(true);
+  }
+
+  const handleOpenEditOfficeModal = (id: number) => {
+    setIsAddModal(false);
+    setOfficeDetails(offices.find(office => office.id === id));
+    setShowOfficeModal(true);
+  }
+
+  const handleCloseOfficeModal = () => setShowOfficeModal(false);
+
+  // get offices
+  useEffect(() => {
+    getOffices().then((data) => setOffices(data));
+  }, []);
+
+
+  // *** to refactor ***
   // delete modal
   const [showDeleteOfficeModal, setShowDeleteOfficeModal] = useState(false);
   const [deleteOfficeModalError, setDeleteOfficeModalError] = useState('');
@@ -134,12 +124,6 @@ const Offices = () => {
     }
   };
 
-  useEffect(() => {
-    fetch('http://localhost:8000/api/offices')
-      .then(response => response.json())
-      .then(data => setOffices(data))
-  }, []);
-
   return (
     <div className="container-fluid bg-white p-5 rounded-3">
       <div className="d-flex justify-content-center">
@@ -148,7 +132,7 @@ const Offices = () => {
         </Button>
         <Modal show={showOfficeModal} onHide={handleCloseOfficeModal}>
           <Modal.Header closeButton>
-            <Modal.Title>{addModal ? 'Add Office' : 'Edit Office'}</Modal.Title>
+            <Modal.Title>{isAddModal ? 'Add Office' : 'Edit Office'}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <FormControl variant="standard" fullWidth>
@@ -165,7 +149,8 @@ const Offices = () => {
                     label="City" 
                     variant="standard" 
                     fullWidth 
-                    defaultValue = {officeToEdit ? officeToEdit.city : ''}
+                    value = { officeDetails.city }
+                    onChange = { (e) => setOfficeDetails({ ...officeDetails, city: e.target.value }) }
                   />
                 </div>
                 <div className="col">
@@ -175,18 +160,19 @@ const Offices = () => {
                     label="Zip Code"
                     variant="standard"
                     fullWidth
-                    defaultValue = {officeToEdit ? officeToEdit.zipcode : ''}
+                    value = { officeDetails.zipcode }
+                    onChange = { (e) => setOfficeDetails({ ...officeDetails, zipcode: e.target.value }) }
                   />
                 </div>
               </div>
             </FormControl>
           </Modal.Body>
           <Modal.Footer>
-            {addModal && (
-              <Button variant="contained" color="primary" className="me-2" onClick={handleAddOffice}>Add</Button>
+            {isAddModal && (
+              <Button variant="contained" color="primary" className="me-2" onClick={handleCreateOffice}>Add</Button>
             )}
-            {!addModal && (
-              <Button variant="contained" color="primary" className="me-2" onClick={handleEditOffice}>Save</Button>
+            {!isAddModal && (
+              <Button variant="contained" color="primary" className="me-2" onClick={handleUpdateOffice}>Save</Button>
             )}
             <Button variant="outlined" color="error" onClick={handleCloseOfficeModal}>Cancel</Button>
           </Modal.Footer>
