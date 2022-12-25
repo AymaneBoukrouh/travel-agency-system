@@ -4,3 +4,4 @@ from core.views.crud.reservation import *
 from core.views.crud.saved_trip import *
 from core.views.crud.trip_click import *
 from core.views.crud.trip import *
+from core.views.crud.user import *
