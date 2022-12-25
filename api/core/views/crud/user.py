@@ -21,5 +21,9 @@ class UserDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.Dest
     def put(self, request, pk):
         return self.update(request, pk)
 
+    def perform_update(self, serializer):
+        print(serializer.validated_data)
+        serializer.save()
+
     def delete(self, request, pk):
         return self.destroy(request, pk)

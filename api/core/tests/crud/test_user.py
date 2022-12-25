@@ -33,7 +33,6 @@ class UserViewTestCase(TestCase):
         new_data = {
             'username': 'updateduser',
             'email': 'updated@example.com',
-            'password': 'updatedpass',
             'first_name': 'Updated',
             'last_name': 'User'
         }
