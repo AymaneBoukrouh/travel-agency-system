@@ -5,5 +5,5 @@ export interface Trip {
   destination: string;
   price: number;
   transport_mode: string;
-  office: number;
+  office_id: number;
 }
