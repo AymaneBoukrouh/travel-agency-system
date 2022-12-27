@@ -52,15 +52,6 @@ const TopBar = () => {
             <div className="d-flex">
               <div className="p-3">
                   <NavLink 
-                    to = "/hello_world"
-                    className = "nav-link"
-                    style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}
-                  >
-                      {t('Hello')}
-                  </NavLink>
-              </div>
-              <div className="p-3">
-                  <NavLink 
                   to = "/trips" 
                   className = "nav-link"
                   style = {({ isActive} ) => isActive ? { color: theme.palette.secondary.main } : {}}

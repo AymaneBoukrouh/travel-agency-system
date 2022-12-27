@@ -2,7 +2,6 @@ import  { createBrowserRouter } from 'react-router-dom';
 
 import App from '@/App';
 import Error from '@/views/Error';
-import HelloWorld from '@/views/HelloWorld';
 import Trips from '@/views/Trips';
 import Trip from '@/views/Trip';
 
@@ -23,10 +22,6 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <Error />,
     children: [
-      {
-        path: 'hello_world',
-        element: <HelloWorld />
-      },
       {
         path: 'trips',
         element: <Trips />
