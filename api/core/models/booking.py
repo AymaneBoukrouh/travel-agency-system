@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Reservation(models.Model):
+class Booking(models.Model):
     id = models.AutoField(primary_key=True)
 
     trip = models.ForeignKey('Trip', on_delete=models.CASCADE)
