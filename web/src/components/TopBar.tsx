@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
 
-import { useTheme, AppBar, Toolbar, Typography } from '@mui/material';
+import { useTheme, AppBar, Toolbar, Typography, TextField, MenuItem } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 
 import { useTopBarContext } from '@/hooks/useTopBarContext';
@@ -12,7 +13,7 @@ import { useLogout } from '@/hooks/useLogout';
 
 const TopBar = () => {
   const theme = useTheme();
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   //const { isAdmin } = useAuthContext(); # TODO: a bit slow, fix later
   const isAdmin = localStorage.getItem('isAdmin') === 'true';
@@ -21,6 +22,21 @@ const TopBar = () => {
   const { logout } = useLogout();
 
   const { topbar_transparent, background_color } = useTopBarContext();
+
+  // locale
+  const locales = [
+    { code: 'en-US', name: 'English' },
+    { code: 'fr-FR', name: 'Français' },
+    { code: 'de-DE', name: 'Deutsch' }
+  ];
+
+  const [locale, setLocale] = useState(localStorage.getItem('locale') || 'en-US');
+
+  const handleLocaleChange = (event: any) => {
+    setLocale(event.target.value);
+    i18n.changeLanguage(event.target.value);
+    localStorage.setItem('locale', event.target.value);
+  }
 
   return (
     <AppBar 
@@ -85,6 +101,22 @@ const TopBar = () => {
               </div>
             </div>}
             {user && <div className="d-flex align-items-center">
+              <div>
+              <TextField
+                  id = 'locale'
+                  select
+                  label = 'Locale'
+                  value = {locale}
+                  onChange = {handleLocaleChange}
+                  color = 'secondary'
+              >
+                  {locales.map((option) => (
+                  <MenuItem key={option.code} value={option.code}>
+                      {option.name}
+                  </MenuItem>
+                  ))}
+              </TextField>
+              </div>
               <div className="dropdown" data-bs-toggle="dropdown" id="user-menu-dropdown" aria-expanded="false">
                 <button className="btn text-light">
                   <AccountCircle style={{ fontSize: '30px' }} />
@@ -104,14 +136,6 @@ const TopBar = () => {
                       className = "dropdown-item"
                     >
                       {t('My Trips')}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to = 'hello_world'
-                      className = "dropdown-item"
-                    >
-                      {t('Language')}
                     </NavLink>
                   </li>
                   <li>
