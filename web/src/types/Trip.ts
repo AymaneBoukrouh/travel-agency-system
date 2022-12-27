@@ -1,5 +1,3 @@
-import { Office } from '@/types/Office';
-
 export interface Trip {
   id: number;
   departure_date: string;
@@ -7,5 +5,5 @@ export interface Trip {
   destination: string;
   price: number;
   transport_mode: string;
-  office: Office;
+  office: number;
 }
