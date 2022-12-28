@@ -5,7 +5,7 @@ class Booking(models.Model):
     id = models.AutoField(primary_key=True)
 
     trip = models.ForeignKey('Trip', on_delete=models.CASCADE)
-    hotel = models.ForeignKey('Hotel', on_delete=models.CASCADE)
+    #hotel = models.ForeignKey('Hotel', on_delete=models.CASCADE)
     number_of_people = models.IntegerField() # TODO: add number of adults and children separately
 
     @property
