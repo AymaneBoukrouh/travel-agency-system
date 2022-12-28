@@ -1,9 +1,11 @@
+from django.conf import settings
 from django.db import models
 
 
 class Booking(models.Model):
     id = models.AutoField(primary_key=True)
 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     trip = models.ForeignKey('Trip', on_delete=models.CASCADE)
     #hotel = models.ForeignKey('Hotel', on_delete=models.CASCADE)
     number_of_people = models.IntegerField() # TODO: add number of adults and children separately
