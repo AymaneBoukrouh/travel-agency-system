@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useParams } from 'react-router-dom'
 
@@ -9,6 +9,8 @@ import { SuitHeart, SuitHeartFill } from 'react-bootstrap-icons';
 import { useTopBar } from '@/hooks/useTopBar';
 import TripImages from '@/components/TripImages';
 
+import BookingFormModal from '@/forms/BookingFormModal';
+
 import '@/views/Trip.scss';
 
 const Trip = () => {
@@ -17,9 +19,15 @@ const Trip = () => {
 
   const { setTopBarBackgroundColor } = useTopBar();
 
+  // modal
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  const handleCloseModal = () => setShowModal(false);
+
+
   useEffect(() => {
     setTopBarBackgroundColor(theme.palette.primary.main);
-  }, [])
+  }, []);
 
   return (
     <div className="d-flex flex-column bg-light h-100" style={{ padding: '30px 15%' }}>
@@ -52,7 +60,8 @@ const Trip = () => {
               </div>
             </div>
             <div className="me-2">
-              <Button variant="contained" color="primary">Book Now</Button>
+              <Button onClick={() => setShowModal(true)} variant="contained" color="primary">Book Now</Button>
+              <BookingFormModal showModal={showModal} handleCloseModal={handleCloseModal} trip={{id: params.id} as Trip} /> {/* TODO: fix trip params */}
             </div>
             <div>
               <Checkbox icon={<SuitHeart size={30} />} checkedIcon={<SuitHeartFill size={30} />} className="text-dark" />
