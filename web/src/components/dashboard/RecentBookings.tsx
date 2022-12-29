@@ -84,7 +84,7 @@ const RecentBookings = () => {
   }, [recentBookingsRef]);
 
   return (
-    <div ref={recentBookingsRef} className="h-100">
+    <div ref={recentBookingsRef} className="h-100 overflow-hidden">
       <h3 className="mb-3">Recent Booking Activity</h3>
       <div ref={tableRef} className="hidescroll" style={{ overflow: 'scroll' }}>
         <table className="table table-hover">
