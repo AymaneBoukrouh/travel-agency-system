@@ -5,35 +5,35 @@ const RecentBookings = () => {
     {
       trip: 'Paris',
       user: 'John Doe',
-      date: '2021-01-01',
+      date: '2 minutes ago',
       status: 'Paid',
       price: 100
     },
     {
       trip: 'Paris',
       user: 'John Doe',
-      date: '2021-01-01',
+      date: '7 minutes ago',
       status: 'Paid',
       price: 100
     },
     {
       trip: 'Paris',
       user: 'John Doe',
-      date: '2021-01-01',
+      date: '3 hours ago',
       status: 'Paid',
       price: 100
     },
     {
       trip: 'Paris',
       user: 'John Doe',
-      date: '2021-01-01',
+      date: 'yesterday',
       status: 'Cancelled',
       price: 100
     },
     {
       trip: 'Paris',
       user: 'John Doe',
-      date: '2021-01-01',
+      date: '5 days ago',
       status: 'Paid',
       price: 100
     },
