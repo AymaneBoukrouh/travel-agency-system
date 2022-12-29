@@ -20,7 +20,10 @@ class BookingList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gener
 
     def perform_create(self, serializer):
         trip = Trip.objects.get(id=self.request.data['trip_id'])
-        user = User.objects.get(id=self.request.data['user_id'])
+
+        # get user from jwt token
+        user = User.objects.get(id=self.request.user.id)
+
         serializer.save(trip=trip, user=user)
   
 class BookingDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
