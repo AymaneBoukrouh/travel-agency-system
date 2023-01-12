@@ -1,72 +1,73 @@
 import { useRef, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const RecentBookings = () => {
   const bookings = [
     {
-      trip: 'Paris',
+      trip_id: 1,
       user: 'John Doe',
       date: '2 minutes ago',
       status: 'Paid',
       price: 100
     },
     {
-      trip: 'Paris',
+      trip_id: 1,
       user: 'John Doe',
       date: '7 minutes ago',
       status: 'Paid',
       price: 100
     },
     {
-      trip: 'Paris',
+      trip_id: 1,
       user: 'John Doe',
       date: '3 hours ago',
       status: 'Paid',
       price: 100
     },
     {
-      trip: 'Paris',
+      trip_id: 1,
       user: 'John Doe',
       date: 'yesterday',
       status: 'Cancelled',
       price: 100
     },
     {
-      trip: 'Paris',
+      trip_id: 1,
       user: 'John Doe',
       date: '5 days ago',
       status: 'Paid',
       price: 100
     },
     {
-      trip: 'Paris',
+      trip_id: 1,
       user: 'John Doe',
       date: '2021-01-01',
       status: 'Paid',
       price: 100
     },
     {
-      trip: 'Paris',
+      trip_id: 1,
       user: 'John Doe',
       date: '2021-01-01',
       status: 'Pending',
       price: 100
     },
     {
-      trip: 'Paris',
+      trip_id: 1,
       user: 'John Doe',
       date: '2021-01-01',
       status: 'Paid',
       price: 100
     },
     {
-      trip: 'Paris',
+      trip_id: 1,
       user: 'John Doe',
       date: '2021-01-01',
       status: 'Paid',
       price: 100
     },
     {
-      trip: 'Paris',
+      trip_id: 1,
       user: 'John Doe',
       date: '2021-01-01',
       status: 'Cancelled',
@@ -90,7 +91,7 @@ const RecentBookings = () => {
         <table className="table table-hover">
           <thead>
             <tr>
-              <th scope="col">Trip</th>
+              <th scope="col">Trip ID</th>
               <th scope="col">User</th>
               <th scope="col">Date</th>
               <th scope="col">Status</th>
@@ -100,7 +101,7 @@ const RecentBookings = () => {
           <tbody>
             {bookings.map((booking, index) => (
               <tr key={index} onClick={() => console.log('clicked')} style={{ cursor: 'pointer' }}>
-                <td>{booking.trip}</td>
+                <td className="text-center"><NavLink to={`/trips/${booking.trip_id}`} className="text-decoration-none">{booking.trip_id}</NavLink></td>
                 <td>{booking.user}</td>
                 <td>{booking.date}</td>
                 <td className="text-center">
