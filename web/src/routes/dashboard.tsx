@@ -36,14 +36,14 @@ const dashboardRoutes = [
       }
     ]
   },
-  {
+  /*{
     path: 'packages',
     element: <DashboardPackages />
   },
   {
     path: 'settings',
     element: <DashboardSettings />
-  }
+  }*/
 ];
 
 export default dashboardRoutes;

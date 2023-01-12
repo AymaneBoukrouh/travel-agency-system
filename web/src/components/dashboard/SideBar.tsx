@@ -15,8 +15,8 @@ const SideBar = (props: SideBarProps) => {
         <DashboardNavLink to="/dashboard/users" Icon={People} bg={props.backgroundColor} />
         <DashboardNavLink to="/dashboard/offices" Icon={Apartment} bg={props.backgroundColor} />
         <DashboardNavLink to="/dashboard/trips" Icon={Tour} bg={props.backgroundColor} />
-        <DashboardNavLink to="/dashboard/packages" Icon={Extension} bg={props.backgroundColor} />
-        <DashboardNavLink to="/dashboard/settings" Icon={Settings} bg={props.backgroundColor} />
+        {/*<DashboardNavLink to="/dashboard/packages" Icon={Extension} bg={props.backgroundColor} />
+        <DashboardNavLink to="/dashboard/settings" Icon={Settings} bg={props.backgroundColor} />*/}
       </div>
     </div>
   )
