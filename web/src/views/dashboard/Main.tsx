@@ -15,7 +15,9 @@ const Main = () => {
   useEffect(() => {
     const expensesHeight = expensesRef.current.clientHeight;
     const recentBookingsElement = document.querySelector('.recent-bookings');
+    const topSavedTripsElement = document.querySelector('.top-saved-trips');
     recentBookingsElement.style.height = `${expensesHeight}px`;
+    topSavedTripsElement.style.height = `${expensesHeight}px`;
   }, []);
 
   return (
@@ -50,7 +52,7 @@ const Main = () => {
           </Card>
         </div>
         <div className="col-12 col-md-6 col-lg-3">
-          <Card className="p-3 bg-white text-dark h-100" elevation={0}>
+          <Card className="p-3 bg-white text-dark top-saved-trips" elevation={0}>
             <DashboardTopSavedTrips />
           </Card>
         </div>
