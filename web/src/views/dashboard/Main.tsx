@@ -8,6 +8,8 @@ import DashboardVisits from '@/components/dashboard/VisitsChart';
 import DashboardStatCard from '@/components/dashboard/StatCard';
 import DashboardTopSavedTrips from '@/components/dashboard/TopSavedTrips';
 import DashboardRecentBookings from '@/components/dashboard/RecentBookings';
+import DashboardMessages from '@/components/dashboard/Messages';
+import DashboardReports from '@/components/dashboard/Reports';
 
 const Main = () => {
   const expensesRef = useRef(null);
@@ -63,7 +65,12 @@ const Main = () => {
         </div>
         <div className="col-12 col-md-6 col-lg-4">
           <Card className="p-3 bg-white text-dark h-100" elevation={0}>
-            <DashboardTopSavedTrips />
+            <DashboardMessages />
+          </Card>
+        </div>
+        <div className="col-12 col-md-6 col-lg-2">
+          <Card className="p-3 bg-white text-dark h-100" elevation={0}>
+            <DashboardReports />
           </Card>
         </div>
       </div>
