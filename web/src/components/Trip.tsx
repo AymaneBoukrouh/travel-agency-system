@@ -19,6 +19,19 @@ interface TripProps {
 }
 
 const Trip = (trip: TripProps) => {
+  const sendTripClick = () => {
+    fetch('http://localhost:8000/api/trip_clicks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        trip_id: trip.id,
+        user_id: 1
+      })
+    })
+  }
+
   return (
     <div className="trip-wrapper">
       <div className="trip-img-wrapper position-relative rounded-3 mb-3 w-100 ratio ratio-1x1">
@@ -42,7 +55,7 @@ const Trip = (trip: TripProps) => {
           </div>
           <div className="d-flex justify-content-center">
             <NavLink to={`/trips/${trip.id}`} className="text-decoration-none mt-3" >
-              <Button variant="contained" className="bg-light text-dark">Details</Button>
+              <Button variant="contained" className="bg-light text-dark" onClick={sendTripClick}>Details</Button>
             </NavLink>
           </div>
         </div>

@@ -8,6 +8,8 @@ from rest_framework.permissions import IsAuthenticated
 # register
 @api_view(['POST'])
 def register(request):
+    '''Register a new user, email and username are the same'''
+
     try:
         # create user
         user = User.objects.create_user(

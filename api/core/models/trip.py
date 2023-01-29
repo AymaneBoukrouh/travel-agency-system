@@ -10,5 +10,11 @@ class Trip(models.Model):
 
     office = models.ForeignKey('Office', on_delete=models.CASCADE)
 
+    morocco = models.BooleanField(default=True)
+
     def nights(self):
         return (self.arrival_date - self.departure_date).days
+
+
+    def bookings(self):
+        return Booking.objects.filter(trip=self)

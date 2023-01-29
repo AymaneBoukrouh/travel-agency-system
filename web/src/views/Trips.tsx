@@ -31,13 +31,13 @@ const TripsView = () => {
 
   return (
     <div className="bg-light">
-      <div className="position-relative" style={{ height: '50vh' }}>
+      <div className="position-relative" style={{ height: '30vh' }}>
         <div 
-          className="position-absolute top-0 start-0 bg-dark w-100 h-50" 
+          className="position-absolute top-0 start-0 bg-dark w-100 h-100" 
           style={{ backgroundImage: "url('/trips-bg.jpg')", backgroundPosition: 'right', backgroundSize: 'cover' }}
         >
         </div>
-        <div className="position-relative position-absolute top-50 start-50 translate-middle rounded-3 bg-light w-50 h-75 p-5 shadow">
+        {/*<div className="position-relative position-absolute top-50 start-50 translate-middle rounded-3 bg-light w-50 h-75 p-5 shadow">
           <div className="mb-3">
             <TextField
               className='bg-white w-100'
@@ -86,14 +86,14 @@ const TripsView = () => {
           <div className="position-absolute top-100 start-50 translate-middle w-50">
             <Button className="text-light w-100 p-3" variant="contained" style={{ backgroundColor: theme.palette.primary.light }}>Search</Button>
           </div>
-        </div>
+            </div>*/}
       </div>
       <div className="d-flex flex-column" style={{ padding: '30px 15%' }}>
         <div className="mb-3">
-          <Trips title="Morocco" />
+          <Trips title="Morocco" morocco={true} />
         </div>
         <div className="p-3 mb-3">
-          <Trips title="Abroad" />
+          <Trips title="Abroad" morocco={false} />
         </div>
       </div>
     </div>

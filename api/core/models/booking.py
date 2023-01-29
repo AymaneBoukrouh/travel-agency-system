@@ -13,5 +13,5 @@ class Booking(models.Model):
     @property
     def total_price(self):
         trip_price = self.trip.price * self.number_of_people
-        hotel_price = self.hotel.price * self.number_of_people * self.trip.number_of_nights
-        return trip_price + hotel_price
+        #hotel_price = self.hotel.price * self.number_of_people * self.trip.number_of_nights
+        return trip_price

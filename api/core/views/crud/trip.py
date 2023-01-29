@@ -1,6 +1,25 @@
 from core.models import Trip, Office
 from core.serializers import TripSerializer
-from rest_framework import mixins, generics
+from rest_framework import mixins, generics, permissions
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view
+from django.utils import timezone
+
+@api_view(['GET'])
+def get_morocco_trips(request):
+    trips = Trip.objects.filter(departure_date__gt=timezone.now(), morocco=True)
+    serializer = TripSerializer(trips, many=True)
+
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_abroad_trips(request):
+    trips = Trip.objects.filter(departure_date__gt=timezone.now(), morocco=False)
+    serializer = TripSerializer(trips, many=True)
+
+    return Response(serializer.data)
 
 
 class TripList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):

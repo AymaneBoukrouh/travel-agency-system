@@ -114,22 +114,6 @@ const TopBar = () => {
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="user-menu-dropdown">
                   <li>
-                    <NavLink
-                      to = "/account"
-                      className = "dropdown-item"
-                    >
-                      {t('Account')}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to = "/mytrips"
-                      className = "dropdown-item"
-                    >
-                      {t('My Trips')}
-                    </NavLink>
-                  </li>
-                  <li>
                     <button className="dropdown-item text-danger" onClick={logout}>
                       {t('Logout')}
                     </button>

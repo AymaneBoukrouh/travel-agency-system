@@ -5,7 +5,7 @@ import ChartLegendItem from '@/components/ChartLegendItem';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const ExpensesChart = () => {
+const ExpensesChart = ({ morocco_revenues, abroad_revenues, revenues }) => {
   const CHART_COLORS = {
     red: 'rgb(255, 99, 132)',
     orange: 'rgb(255, 159, 64)',
@@ -59,20 +59,20 @@ const ExpensesChart = () => {
             <h4>Services</h4>
             <ChartLegendItem className="flex-grow-1" name="AWS" value="-194" color="rgb(255, 99, 132)" />
             <ChartLegendItem className="flex-grow-1" name="Google Maps" value="-233" color="rgb(255, 159, 64)" />
-            <ChartLegendItem /*  */className="flex-grow-1" name="Hotel API" value="-93" color="rgb(255, 205, 86)" />
+            <ChartLegendItem className="flex-grow-1" name="Hotel API" value="-93" color="rgb(255, 205, 86)" />
             <ChartLegendItem className="flex-grow-1" name="Car Rental API" value="-52" color="rgb(75, 192, 192)" />
           </div>
-          <div className="d-flex flex-column gap-2 mb-3">  
+          <div className="d-flex flex-column gap-2 mb-3">
             <h4>Trips</h4>
-            <ChartLegendItem className="flex-grow-1" name="Morocco" value="194" color="rgb(255, 99, 132)" />
-            <ChartLegendItem className="flex-grow-1" name="Abroad" value="233" color="rgb(255, 159, 64)" />
+            <ChartLegendItem className="flex-grow-1" name="Morocco" value={morocco_revenues} color="rgb(255, 99, 132)" />
+            <ChartLegendItem className="flex-grow-1" name="Abroad" value={abroad_revenues} color="rgb(255, 159, 64)" />
           </div>
         </div>
       </div>
       <div className="col-8 position-relative mb-3">
         <div className="position-absolute top-50 start-50 translate-middle">
           <div className="display-6 text-center">Revenues</div>
-          <h2 className="display-6 fw-bold text-center text-success">$33,194</h2>
+          <h2 className="display-6 fw-bold text-center text-success">${revenues}</h2>
           <div className="display-6 text-center">Expenses</div>
           <h2 className="display-6 fw-bold text-center text-danger">-$572</h2>
         </div>

@@ -19,6 +19,10 @@ urlpatterns = [
     path('trips', views.TripList.as_view()),
     path('trips/<int:pk>', views.TripDetail.as_view()),
     path('saved_trips', views.SavedTripList.as_view()),
+    path('trips/morocco', views.get_morocco_trips, name='morocco-trips'),
+    path('trips/abroad', views.get_abroad_trips, name='abroad-trips'),
     path('saved_trips/<int:pk>', views.SavedTripDetail.as_view()),
     path('trip_clicks', views.TripClickList.as_view(), name='trip-click-list'),
+    path('generate_dummy_data', views.generate_dummy_data),
+    path('dashboard', views.dashboard)
 ]
